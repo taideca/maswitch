@@ -1,36 +1,87 @@
-/* グリッド全体のコンテナ */
-#grid-container {
-    display: grid;
-    /* 3列に分割 */
-    grid-template-columns: repeat(3, 100px);
-    /* 3行に分割 */
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px; /* マスとマスの間の隙間 */
-    width: 315px; /* コンテナの幅を固定 */
-    margin: 20px auto; /* 中央揃え */
+/* --- 前回のCSSはそのまま --- */
+body {
+    font-family: sans-serif;
+    text-align: center;
 }
 
-/* 各マス共通のスタイル */
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    width: 315px;
+    margin: 20px auto;
+}
+
 .grid-item {
     width: 100px;
     height: 100px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    cursor: pointer; /* カーソルをポインターにする */
-    transition: background-color 0.3s; /* 背景色の変化を滑らかに */
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: hidden; /* 画像がはみ出ないように */
 }
 
-/* マウスが乗ったときのスタイル */
 .grid-item:hover {
     background-color: #e0e0e0;
 }
 
-/* ハイライトされたマスのスタイル */
 .grid-item.highlighted {
-    background-color: #a7c7e7; /* 水色 */
-    border: 2px solid #0056b3; /* 濃い青色の枠線 */
+    background-color: #a7c7e7;
+    border-color: #0056b3;
+}
+
+/* ▼▼▼ 以下を追記 ▼▼▼ */
+
+/* 編集対象として選択されているマスのスタイル */
+.grid-item.editing {
+    border-color: #28a745; /* 緑色の枠線 */
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+/* 画像がマスに収まるように */
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+
+/* 編集UIのスタイル */
+#editor {
+    width: 315px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+}
+
+#editor h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#text-input {
+    width: 200px;
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
 }

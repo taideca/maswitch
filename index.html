@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マス入れ替えゲーム</title>
+    <title>マス入れ替え・編集ゲーム</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>マス入れ替えサンプル</h1>
+    <h1>マス入れ替え＆編集サンプル</h1>
+    <p>マスをクリックして選択してから、下のフォームで内容を更新してください。</p>
+    
     <div id="grid-container">
         <div class="grid-item">1</div>
         <div class="grid-item">2</div>
@@ -19,6 +21,19 @@
         <div class="grid-item">7</div>
         <div class="grid-item">8</div>
         <div class="grid-item">9</div>
+    </div>
+
+    <div id="editor">
+        <h2>選択したマスを編集</h2>
+        <div class="control-group">
+            <label for="text-input">テキスト:</label>
+            <input type="text" id="text-input" placeholder="ここに入力">
+            <button id="update-text-btn">テキストで更新</button>
+        </div>
+        <div class="control-group">
+            <label for="image-input">画像:</label>
+            <input type="file" id="image-input" accept="image/*">
+        </div>
     </div>
 
     <script src="script.js"></script>
