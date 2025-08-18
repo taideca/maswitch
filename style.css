@@ -85,3 +85,18 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
+
+/* ▼▼▼ ファイルの末尾に追記 ▼▼▼ */
+#mode-selector {
+    width: 315px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+#mode-selector label {
+    margin: 0 10px;
+    cursor: pointer;
+}
