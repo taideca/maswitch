@@ -1,9 +1,16 @@
 {
   "template": [
-    { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" },
-    { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" },
-    { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" },
-    { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" },
-    { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }, { "content": "", "color": "#ffffff" }
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
+  ],
+  "cute": [
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"},
+    {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+    {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}
   ]
 }
