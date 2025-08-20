@@ -21,16 +21,16 @@ body {
 
 #grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 80px);
-    grid-template-rows: repeat(5, 80px);
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px);
     gap: 5px;
     width: 315px;
     margin: 20px auto;
 }
 
 .grid-item {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     background-color: #f0f0f0;
     border: 2px solid #ccc;
     display: flex;
