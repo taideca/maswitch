@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        const imagePath = `pictures/${filename}`;
-        editingCell.innerHTML = `<img src="${imagePath}" alt="${filename}">`;
+        const imagePath = `pictures/${filename}.png`;
+        editingCell.innerHTML = `<img src="${imagePath}" alt="${filename}.png">`;
     });
 
     // カラーピッカー
