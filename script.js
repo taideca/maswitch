@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 初期化処理 ---
     function initializeGrid() {
         gridContainer.innerHTML = ''; // グリッドをクリア
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 25; i++) {
             const cell = document.createElement('div');
             cell.classList.add('grid-item');
             cell.dataset.index = i; // インデックス番号をデータとして保持
