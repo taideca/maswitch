@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageInput = document.getElementById('image-input');
     const colorInput = document.getElementById('color-input');
     const generateCodeBtn = document.getElementById('generate-code-btn');
+    const copyCodeBtn = document.getElementById('copy-code-btn');
     const outputTextarea = document.getElementById('output-textarea');
 
     // 検索パネルの要素
@@ -102,6 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // 配列を綺麗な形式のJSONテキストに変換して、テキストエリアに表示
         outputTextarea.value = formatJsonForGrid(gridData);
         alert('盤面データを出力しました。テキストエリアからコピーしてquestions.jsonに貼り付けてください。');
+    });
+
+    // 【開発者向け】出力したコードをコピーするボタンの処理
+    copyCodeBtn.addEventListener('click', () => {
+        const codeToCopy = outputTextarea.value;
+        if (!codeToCopy) {
+            alert('先に出力ボタンを押してコードを生成してください。');
+            return;
+        }
+
+        navigator.clipboard.writeText(codeToCopy).then(() => {
+            alert('コードをクリップボードにコピーしました！');
+        }).catch(err => {
+            console.error('コピーに失敗しました:', err);
+            alert('コピーに失敗しました。');
+        });
     });
 
     // 読込ボタン (questions.json を読み込むように変更)
