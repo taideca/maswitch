@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateTextBtn = document.getElementById('update-text-btn');
     const imageInput = document.getElementById('image-input');
     const colorInput = document.getElementById('color-input');
-    
+    const generateCodeBtn = document.getElementById('generate-code-btn');
+    const outputTextarea = document.getElementById('output-textarea');
+
     // 検索パネルの要素
     const loadIdInput = document.getElementById('load-id-input');
     const loadBtn = document.getElementById('load-btn');
@@ -89,6 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ▼▼▼ 【開発者向け】盤面データを出力するボタンの処理 ▼▼▼
+    generateCodeBtn.addEventListener('click', () => {
+        const gridData = [];
+        cells.forEach(cell => {
+            const cellColor = cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "";
+            gridData.push({
+                content: cell.innerHTML,
+                color: cellColor
+            });
+        });
+
+        // 配列を綺麗な形式のJSONテキストに変換して、テキストエリアに表示
+        outputTextarea.value = JSON.stringify(gridData, null, 2);
+        alert('盤面データを出力しました。テキストエリアからコピーしてquestions.jsonに貼り付けてください。');
+    });
+
     // 読込ボタン (questions.json を読み込むように変更)
     loadBtn.addEventListener('click', () => {
         const loadId = loadIdInput.value.trim();
@@ -120,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('データの読み込みに失敗しました。puzzles.jsonファイルが存在するか確認してください。');
             });
     });
-
 
     // --- 主要な関数 ---
 

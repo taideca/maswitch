@@ -64,7 +64,6 @@ body {
     object-fit: cover;
 }
 
-
 /* 編集UIのスタイル */
 #editor {
     width: 315px;
@@ -97,6 +96,13 @@ body {
 button {
     padding: 5px 10px;
     cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box; /* paddingを含めて幅を100%にする */
+    margin-bottom: 10px;
+    font-family: monospace; /* コードが見やすいように等幅フォントに */
 }
 
 /* マスが空でもグリッドが崩れないように */

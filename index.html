@@ -30,8 +30,8 @@
         </div>
 
         <div id="edit-panel" class="panel hidden">
-            <h2>編集パネル</h2>
-            <p>マスをクリックで選択後、内容を編集・保存します。</p>
+            <h2>作成パネル</h2>
+            <p>マスをクリックで選択後、内容を編集・出力します。</p>
             <div class="control-group">
                 <label for="text-input">テキスト:</label>
                 <input type="text" id="text-input" placeholder="ここに入力">
@@ -47,17 +47,18 @@
             </div>
             <hr>
             <div class="control-group">
+                <button id="generate-code-btn">コードを出力</button>
                 <label for="save-id-input">保存ID:</label>
                 <input type="text" id="save-id-input" placeholder="例: puzzle1">
-                <button id="save-btn">現在の盤面を保存</button>
+                <textarea id="output-textarea" rows="5" readonly placeholder="ここに盤面データが出力されます..."></textarea>
             </div>
         </div>
 
         <div id="search-panel" class="panel hidden">
             <h2>検索パネル</h2>
-            <p>保存した盤面をIDで読み込みます。</p>
+            <p>盤面をIDで読み込みます。</p>
             <div class="control-group">
-                <label for="load-id-input">読込ID:</label>
+                <label for="load-id-input">問題ID:</label>
                 <input type="text" id="load-id-input" placeholder="例: puzzle1">
                 <button id="load-btn">読み込む</button>
             </div>
