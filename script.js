@@ -91,19 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ▼▼▼ 【開発者向け】盤面データを出力するボタンの処理 ▼▼▼
+    // 【開発者向け】盤面データを出力するボタンの処理
     generateCodeBtn.addEventListener('click', () => {
         const gridData = [];
         cells.forEach(cell => {
             const cellColor = cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "";
-            gridData.push({
-                content: cell.innerHTML,
-                color: cellColor
-            });
+            gridData.push({content: cell.innerHTML,color: cellColor});
         });
 
         // 配列を綺麗な形式のJSONテキストに変換して、テキストエリアに表示
-        outputTextarea.value = JSON.stringify(gridData, null, 2);
+        outputTextarea.value = formatJsonForGrid(gridData);
         alert('盤面データを出力しました。テキストエリアからコピーしてquestions.jsonに貼り付けてください。');
     });
 
@@ -140,6 +137,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 主要な関数 ---
+
+    // 5x5形式でJSONテキストを整形する関数
+    function formatJsonForGrid(gridData) {
+        let output = '[\n  '; // 開始の括弧とインデント
+        for (let i = 0; i < gridData.length; i++) {
+            // 1マス分のデータを文字列に変換
+            output += JSON.stringify(gridData[i]);
+
+            // 配列の最後の要素でなければ、カンマを追加
+            if (i < gridData.length - 1) {
+                output += ',';
+            }
+
+            // 5個目の要素ごと（行の終わり）に改行とインデントを追加
+            if ((i + 1) % 5 === 0) {
+                output += '\n  ';
+            } else {
+                // 行の途中ならスペースを追加
+                output += ' ';
+            }
+        }
+        // 最後の余分なインデントを削除し、終了の括弧を追加
+        output = output.trimEnd() + '\n]';
+        return output;
+    }
 
     // マスがクリックされたときの処理
     function onCellClick(event) {
