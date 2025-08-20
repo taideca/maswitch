@@ -4,10 +4,25 @@ body {
     text-align: center;
 }
 
+#mode-selector {
+    width: 315px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+#mode-selector label {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
 #grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
     gap: 5px;
     width: 315px;
     margin: 20px auto;
@@ -83,20 +98,5 @@ body {
 
 button {
     padding: 5px 10px;
-    cursor: pointer;
-}
-
-/* ▼▼▼ ファイルの末尾に追記 ▼▼▼ */
-#mode-selector {
-    width: 315px;
-    margin: 20px auto;
-    text-align: center;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-}
-#mode-selector label {
-    margin: 0 10px;
     cursor: pointer;
 }
