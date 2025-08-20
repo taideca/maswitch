@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1>マス入れ替え＆編集サンプル</h1>
-    <p>マスをクリックして選択してから、下のフォームで内容を更新してください。</p>
-
+    <h1>マスゲーム</h1>
     <div id="mode-selector">
         <strong>操作モード:</strong>
         <label>
@@ -18,6 +15,9 @@
         </label>
         <label>
             <input type="radio" name="mode" value="edit"> 編集
+        </label>
+        <label>
+            <input type="radio" name="mode" value="search"> 検索
         </label>
     </div>
     
@@ -49,19 +49,46 @@
         <div class="grid-item">25</div>
     </div>
 
-    <div id="editor">
-        <h2>選択したマスを編集</h2>
-        <div class="control-group">
-            <label for="text-input">テキスト:</label>
-            <input type="text" id="text-input" placeholder="ここに入力">
-            <button id="update-text-btn">テキストで更新</button>
+    <div id="panels">
+        <div id="swap-panel" class="panel">
+            <p>マスを2つ選んで中身を入れ替えます。</p>
         </div>
-        <div class="control-group">
-            <label for="image-input">画像:</label>
-            <input type="file" id="image-input" accept="image/*">
+
+        <div id="edit-panel" class="panel hidden">
+            <h2>編集パネル</h2>
+            <p>マスをクリックで選択後、内容を編集・保存します。</p>
+            <div class="control-group">
+                <label for="text-input">テキスト:</label>
+                <input type="text" id="text-input" placeholder="ここに入力">
+                <button id="update-text-btn">テキストで更新</button>
+            </div>
+            <div class="control-group">
+                <label for="image-input">画像:</label>
+                <input type="file" id="image-input" accept="image/*">
+            </div>
+            <div class="control-group">
+                <label for="color-input">マスの色:</label>
+                <input type="color" id="color-input" value="#f0f0f0">
+            </div>
+            <hr>
+            <div class="control-group">
+                <label for="save-id-input">保存ID:</label>
+                <input type="text" id="save-id-input" placeholder="例: puzzle1">
+                <button id="save-btn">現在の盤面を保存</button>
+            </div>
+        </div>
+
+        <div id="search-panel" class="panel hidden">
+            <h2>検索パネル</h2>
+            <p>保存した盤面をIDで読み込みます。</p>
+            <div class="control-group">
+                <label for="load-id-input">読込ID:</label>
+                <input type="text" id="load-id-input" placeholder="例: puzzle1">
+                <button id="load-btn">読み込む</button>
+            </div>
         </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>

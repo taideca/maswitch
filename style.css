@@ -51,8 +51,6 @@ body {
     border-color: #0056b3;
 }
 
-/* ▼▼▼ 以下を追記 ▼▼▼ */
-
 /* 編集対象として選択されているマスのスタイル */
 .grid-item.editing {
     border-color: #28a745; /* 緑色の枠線 */
@@ -98,5 +96,55 @@ body {
 
 button {
     padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* マスが空でもグリッドが崩れないように */
+.grid-item:empty {
+    background-color: #f0f0f0;
+}
+
+#panels {
+    width: 350px;
+    margin: 20px auto;
+}
+
+.panel {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* このクラスを持つ要素を非表示にする */
+.hidden {
+    display: none;
+}
+
+#editor h2, #search-panel h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.control-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.control-group label {
+    font-weight: bold;
+}
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+#color-input {
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border: 1px solid #ccc;
     cursor: pointer;
 }
