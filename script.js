@@ -16,9 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateTextBtn = document.getElementById('update-text-btn');
     const imageInput = document.getElementById('image-input');
     const colorInput = document.getElementById('color-input');
-    const saveIdInput = document.getElementById('save-id-input');
-    const saveBtn = document.getElementById('save-btn');
-
+    
     // 検索パネルの要素
     const loadIdInput = document.getElementById('load-id-input');
     const loadBtn = document.getElementById('load-btn');
@@ -26,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let cells = []; // マス要素を格納する配列
 
     // --- 状態を管理する変数 ---
-    let highlightedCell = null;
-    let editingCell = null;
-    let currentMode = 'swap';
+    let highlightedCell = null; // 入れ替え用に選択したマス
+    let editingCell = null;     // 編集対象として選択したマス
+    let currentMode = 'swap';   // 現在の操作モード
 
     // --- 初期化処理 ---
     function initializeGrid() {
@@ -59,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // テキスト更新ボタン
     updateTextBtn.addEventListener('click', () => {
-        if (editingCell && textInput.value) {
+        if (editingCell) {
             editingCell.innerHTML = '';
             editingCell.textContent = textInput.value;
-        } else if (!editingCell) {
+        } else {
             alert('編集したいマスを先にクリックしてください！');
         }
     });
@@ -72,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editingCell) {
             const file = event.target.files[0];
             if (!file) return;
+
             const reader = new FileReader();
             reader.onload = (e) => {
                 editingCell.innerHTML = `<img src="${e.target.result}" alt="user image">`;
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsDataURL(file);
         } else {
             alert('画像をセットしたいマスを先にクリックしてください！');
-            imageInput.value = '';
+            imageInput.value = ''; // 選択をリセット
         }
     });
 
@@ -90,33 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 保存ボタン
-    saveBtn.addEventListener('click', () => {
-        const saveId = saveIdInput.value.trim();
-        if (!saveId) {
-            alert('保存IDを入力してください。');
-            return;
-        }
-        
-        const gridData = [];
-        cells.forEach(cell => {
-            gridData.push({
-                content: cell.innerHTML,
-                color: cell.style.backgroundColor
-            });
-        });
-
-        // localStorageから既存のデータを取得
-        const allPuzzles = JSON.parse(localStorage.getItem('puzzleSets')) || {};
-        // 新しいデータを追加
-        allPuzzles[saveId] = gridData;
-        // localStorageに保存
-        localStorage.setItem('puzzleSets', JSON.stringify(allPuzzles));
-
-        alert(`ID:「${saveId}」で盤面を保存しました。`);
-    });
-
-    // 読込ボタン
+    // 読込ボタン (questions.json を読み込むように変更)
     loadBtn.addEventListener('click', () => {
         const loadId = loadIdInput.value.trim();
         if (!loadId) {
@@ -124,16 +97,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const allPuzzles = JSON.parse(localStorage.getItem('puzzleSets')) || {};
-        const puzzleData = allPuzzles[loadId];
+        // JSONファイルを読み込む
+        fetch('questions.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('ネットワークの応答が正しくありませんでした。');
+                }
+                return response.json(); // ファイルをJSONとして解釈
+            })
+            .then(allPuzzles => {
+                const puzzleData = allPuzzles[loadId]; // IDに一致するデータを取得
 
-        if (puzzleData) {
-            applyGridData(puzzleData);
-            alert(`ID:「${loadId}」の盤面を読み込みました。`);
-        } else {
-            alert(`ID:「${loadId}」のデータが見つかりません。`);
-        }
+                if (puzzleData) {
+                    applyGridData(puzzleData);
+                    alert(`ID:「${loadId}」の盤面を読み込みました。`);
+                } else {
+                    alert(`ID:「${loadId}」のデータが見つかりません。`);
+                }
+            })
+            .catch(error => {
+                console.error('ファイルの読み込みに失敗しました:', error);
+                alert('データの読み込みに失敗しました。puzzles.jsonファイルが存在するか確認してください。');
+            });
     });
+
 
     // --- 主要な関数 ---
 
@@ -144,6 +131,66 @@ document.addEventListener('DOMContentLoaded', () => {
             handleSwapMode(clickedCell);
         } else if (currentMode === 'edit') {
             handleEditMode(clickedCell);
+        }
+        // searchモードではマスをクリックしても何もしない
+    }
+    
+    // 入れ替えモードの処理
+    function handleSwapMode(clickedCell) {
+        // 編集モードの選択は解除
+        if (editingCell) {
+            editingCell.classList.remove('editing');
+            editingCell = null;
+        }
+
+        if (highlightedCell === null) {
+            // 1. 最初のマスを選択
+            clickedCell.classList.add('highlighted');
+            highlightedCell = clickedCell;
+        } else if (highlightedCell === clickedCell) {
+            // 2. 同じマスをクリックしたら選択解除
+            clickedCell.classList.remove('highlighted');
+            highlightedCell = null;
+        } else {
+            // 3. 2つ目のマスを選択したら、中身と色を入れ替える
+            const tempContent = highlightedCell.innerHTML;
+            const tempColor = highlightedCell.style.backgroundColor;
+            
+            highlightedCell.innerHTML = clickedCell.innerHTML;
+            highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
+            
+            clickedCell.innerHTML = tempContent;
+            clickedCell.style.backgroundColor = tempColor;
+
+            // 入れ替え終わったら選択状態をリセット
+            highlightedCell.classList.remove('highlighted');
+            highlightedCell = null;
+        }
+    }
+
+    // 編集モードの処理
+    function handleEditMode(clickedCell) {
+        // 入れ替えモードの選択は解除
+        if (highlightedCell) {
+            highlightedCell.classList.remove('highlighted');
+            highlightedCell = null;
+        }
+
+        // すでに選択されているマスがあれば、一旦解除
+        if (editingCell) {
+            editingCell.classList.remove('editing');
+        }
+
+        // クリックしたマスが、選択中だったマスと同じでなければ、新しく選択する
+        if (editingCell !== clickedCell) {
+            clickedCell.classList.add('editing');
+            editingCell = clickedCell;
+            // 選択したマスの現在の色をカラーピッカーに反映
+            const currentColor = editingCell.style.backgroundColor;
+            colorInput.value = rgbToHex(currentColor) || '#f0f0f0';
+        } else {
+            // 同じマスをクリックした場合は選択解除
+            editingCell = null;
         }
     }
 
@@ -160,64 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 盤面データ適用
     function applyGridData(gridData) {
         gridData.forEach((data, index) => {
-            cells[index].innerHTML = data.content;
-            cells[index].style.backgroundColor = data.color || '';
+            if (cells[index]) {
+                cells[index].innerHTML = data.content;
+                cells[index].style.backgroundColor = data.color || '';
+            }
         });
     }
 
-    // 編集モードの処理
-    function handleEditMode(clickedCell) {
-        if (editingCell) {
-            editingCell.classList.remove('editing');
-        }
-        if (editingCell !== clickedCell) {
-            clickedCell.classList.add('editing');
-            editingCell = clickedCell;
-            // 選択したマスの現在の色をカラーピッカーに反映
-            const currentColor = editingCell.style.backgroundColor;
-            colorInput.value = rgbToHex(currentColor) || '#f0f0f0';
-        } else {
-            editingCell = null;
-        }
-    }
-    
-    // 入れ替えモードの処理 (前回とほぼ同じ)
-    function handleSwapMode(clickedCell) { /* ... 省略 ... */ }
-    
-    // 選択状態をリセット
-    function resetSelections() { /* ... 省略 ... */ }
-    
-    // RGBを16進数カラーコードに変換するヘルパー関数
-    function rgbToHex(rgb) {
-        if (!rgb || !rgb.startsWith('rgb')) return null;
-        const [r, g, b] = rgb.match(/\d+/g).map(Number);
-        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    }
-    
-    // --- 実行開始 ---
-    initializeGrid();
-    updatePanelVisibility();
-
-    // 省略した関数の実装
-    function handleSwapMode(clickedCell) {
-        if (highlightedCell === null) {
-            clickedCell.classList.add('highlighted');
-            highlightedCell = clickedCell;
-        } else if (highlightedCell === clickedCell) {
-            clickedCell.classList.remove('highlighted');
-            highlightedCell = null;
-        } else {
-            const tempContent = highlightedCell.innerHTML;
-            const tempColor = highlightedCell.style.backgroundColor;
-            highlightedCell.innerHTML = clickedCell.innerHTML;
-            highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
-            clickedCell.innerHTML = tempContent;
-            clickedCell.style.backgroundColor = tempColor;
-            highlightedCell.classList.remove('highlighted');
-            highlightedCell = null;
-        }
-    }
-
+    // 選択状態をすべてリセットする関数
     function resetSelections() {
         if (highlightedCell) {
             highlightedCell.classList.remove('highlighted');
@@ -228,4 +225,19 @@ document.addEventListener('DOMContentLoaded', () => {
             editingCell = null;
         }
     }
+    
+    // RGBを16進数カラーコードに変換するヘルパー関数
+    function rgbToHex(rgb) {
+        if (!rgb || !rgb.startsWith('rgb')) return rgb; // rgb形式でなければそのまま返す
+        try {
+            const [r, g, b] = rgb.match(/\d+/g).map(Number);
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        } catch (e) {
+            return '#f0f0f0'; // 変換に失敗した場合のデフォルト値
+        }
+    }
+    
+    // --- 実行開始 ---
+    initializeGrid();
+    updatePanelVisibility();
 });
