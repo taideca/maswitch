@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 編集パネルの要素
     const textInput = document.getElementById('text-input');
     const updateTextBtn = document.getElementById('update-text-btn');
-    const imageInput = document.getElementById('image-input');
+    const imageNameInput = document.getElementById('image-name-input');
+    const updateImageBtn = document.getElementById('update-image-btn');
     const colorInput = document.getElementById('color-input');
     const generateCodeBtn = document.getElementById('generate-code-btn');
     const copyCodeBtn = document.getElementById('copy-code-btn');
@@ -68,21 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 画像選択
-    imageInput.addEventListener('change', (event) => {
-        if (editingCell) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                editingCell.innerHTML = `<img src="${e.target.result}" alt="user image">`;
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert('画像をセットしたいマスを先にクリックしてください！');
-            imageInput.value = ''; // 選択をリセット
+    // 画像選択の処理をファイル名指定方式に変更
+    updateImageBtn.addEventListener('click', () => {
+        if (!editingCell) {
+            alert('編集したいマスを先にクリックしてください！');
+            return;
         }
+        const filename = imageNameInput.value.trim();
+        if (!filename) {
+            alert('画像ファイル名を入力してください。');
+            return;
+        }
+        
+        const imagePath = `pictures/${filename}`;
+        editingCell.innerHTML = `<img src="${imagePath}" alt="${filename}">`;
     });
 
     // カラーピッカー
