@@ -44,7 +44,7 @@
     "data": [
       {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+      {"content":"","color":"#ffffff","fixed":true}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}
     ]
@@ -72,11 +72,11 @@
   "color2": {
     "answer": "わーるど",
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff","fixed":true}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ff0000"}, {"content":"","color":"#ff0000"}, {"content":"","color":"#ff0000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
+      {"content":"","color":"#ff0000"}, {"content":"","color":"#ff0000","fixed":true}, {"content":"","color":"#ff0000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
     ]
   }
 }
