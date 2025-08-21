@@ -78,5 +78,15 @@
       {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#ff0000"}, {"content":"","color":"#ff0000","fixed":true}, {"content":"","color":"#ff0000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
     ]
+  },
+  "law": {
+    "answer": "いけす",
+    "data": [
+      {"content":"駆","color":"#ffffff"}, {"content":"動","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"国","color":"#ffffff"}, {"content":"道","color":"#ffffff"},
+      {"content":"校","color":"#ffffff"}, {"content":"歌","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"羽","color":"#ffffff"}, {"content":"化","color":"#ffffff"},
+      {"content":"","color":"#ffffff"}, {"content":"頭","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0000ff"}, {"content":"数","color":"#ffffff"}, {"content":"多","color":"#ffffff"},
+      {"content":"偉","color":"#ffffff"}, {"content":"人","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0500ff"}, {"content":"虹","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+      {"content":"宝","color":"#ffffff"}, {"content":"石","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0000ff"}, {"content":"?","color":"#ffffff"}
+    ]
   }
 }
