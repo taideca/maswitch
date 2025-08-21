@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.classList.add('grid-item');
             // cell.dataset.index = i; // インデックス番号をデータとして保持
             // cell.textContent = i + 1;
-            // gridContainer.appendChild(cell);
+            gridContainer.appendChild(cell);
 
             // クリックイベントを追加
             cell.addEventListener('click', onCellClick);
