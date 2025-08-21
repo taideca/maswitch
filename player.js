@@ -93,6 +93,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].style.backgroundColor = data.color || '';
             }
         });
+        shuffleGrid();
+    }
+
+    // マスをランダムに入れ替え
+    function shuffleGrid() {
+        // 現在の盤面の content と color を配列として一時保存
+        const currentGridState = [];
+        cells.forEach(cell => {
+            currentGridState.push({
+                content: cell.innerHTML,
+                color: cell.style.backgroundColor
+            });
+        });
+
+        // フィッシャー–イェーツのシャッフルアルゴリズムで配列を並べ替える
+        for (let i = currentGridState.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            // 要素を交換
+            [currentGridState[i], currentGridState[j]] = [currentGridState[j], currentGridState[i]];
+        }
+        
+        // シャッフルされた配列を実際のマスに再適用する
+        currentGridState.forEach((state, index) => {
+            cells[index].innerHTML = state.content;
+            cells[index].style.backgroundColor = state.color;
+        });
     }
 
     // --- 実行開始 ---
