@@ -4,6 +4,17 @@ body {
     text-align: center;
 }
 
+#answer-section {
+    width: 315px;
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+}
+#answer-input {
+    flex-grow: 1; /* 横幅を可能な限り広げる */
+    padding: 8px;
+}
+
 #mode-selector {
     width: 315px;
     margin: 20px auto;

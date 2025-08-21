@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateCodeBtn = document.getElementById('generate-code-btn');
     const copyCodeBtn = document.getElementById('copy-code-btn');
     const outputTextarea = document.getElementById('output-textarea');
+    const answerKeyInput = document.getElementById('answer-key-input');
 
     // 検索パネルの要素
     const loadIdInput = document.getElementById('load-id-input');
@@ -94,14 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 【開発者向け】盤面データを出力するボタンの処理
     generateCodeBtn.addEventListener('click', () => {
+        const answer = answerKeyInput.value.trim();
+        if (!answer) {
+            alert('謎の答えを入力してください。');
+            return;
+        }
+
         const gridData = [];
         cells.forEach(cell => {
             const cellColor = cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "";
             gridData.push({content: cell.innerHTML,color: cellColor});
         });
 
+        // データと答えを一つのオブジェクトにまとめる
+        const puzzleObject = {
+            data: gridData,
+            answer: answer
+        };
+
         // 配列を綺麗な形式のJSONテキストに変換して、テキストエリアに表示
-        outputTextarea.value = formatJsonForGrid(gridData);
+        outputTextarea.value = formatJsonForGrid(puzzleObject);
         alert('盤面データを出力しました。テキストエリアからコピーしてquestions.jsonに貼り付けてください。');
     });
 
@@ -156,8 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 主要な関数 ---
 
     // 5x5形式でJSONテキストを整形する関数
-    function formatJsonForGrid(gridData) {
+    function formatJsonForGrid(puzzleObject) {
         let output = '[\n  '; // 開始の括弧とインデント
+        output += `  "answer": "${puzzleObject.answer}",\n`;
+        output += '  "data": [\n    '; // data配列の開始
+
+        const gridData = puzzleObject.data;
         for (let i = 0; i < gridData.length; i++) {
             // 1マス分のデータを文字列に変換
             output += JSON.stringify(gridData[i]);
@@ -176,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         // 最後の余分なインデントを削除し、終了の括弧を追加
-        output = output.trimEnd() + '\n]';
+        output = output.trimEnd() + '\n  ]\n}';
         return output;
     }
 
