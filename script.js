@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 25; i++) {
             const cell = document.createElement('div');
             cell.classList.add('grid-item');
-            cell.dataset.index = i; // インデックス番号をデータとして保持
-            cell.textContent = i + 1;
+            // cell.dataset.index = i; // インデックス番号をデータとして保持
+            // cell.textContent = i + 1;
             gridContainer.appendChild(cell);
 
             // クリックイベントを追加
@@ -168,10 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json(); // ファイルをJSONとして解釈
             })
             .then(allPuzzles => {
-                const puzzleData = allPuzzles[loadId]; // IDに一致するデータを取得
+                const puzzleObject = allPuzzles[loadId]; // IDに一致するデータを取得
 
-                if (puzzleData) {
-                    applyGridData(puzzleData);
+                if (puzzleObject && puzzleObject.data) {
+                    applyGridData(puzzleObject.data);
                     alert(`ID:「${loadId}」の盤面を読み込みました。`);
                 } else {
                     alert(`ID:「${loadId}」のデータが見つかりません。`);
