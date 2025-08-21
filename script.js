@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyCodeBtn = document.getElementById('copy-code-btn');
     const outputTextarea = document.getElementById('output-textarea');
     const answerKeyInput = document.getElementById('answer-key-input');
+    const fixCellCheckbox = document.getElementById('fix-cell-checkbox');
 
     // 検索パネルの要素
     const loadIdInput = document.getElementById('load-id-input');
@@ -86,6 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         editingCell.innerHTML = `<img src="${imagePath}" alt="${filename}.png">`;
     });
 
+    // 固定チェックボックス
+    fixCellCheckbox.addEventListener('change', () => {
+        if (editingCell) {
+            // チェック状態に応じて 'fixed' クラスを付け外しする
+            editingCell.classList.toggle('fixed', fixCellCheckbox.checked);
+            // 見た目をハイライト（後述のCSSで定義）
+            editingCell.style.backgroundColor = fixCellCheckbox.checked ? '#e9e9e9' : (colorInput.value || '#f0f0f0');
+        }
+    });
+
     // カラーピッカー
     colorInput.addEventListener('input', () => {
         if (editingCell) {
@@ -103,8 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const gridData = [];
         cells.forEach(cell => {
-            const cellColor = cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "";
-            gridData.push({content: cell.innerHTML,color: cellColor});
+            const cellData = {
+                content: cell.innerHTML,
+                color: cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : ""
+            };
+            if (cell.classList.contains('fixed')) {
+                cellData.fixed = true;
+            }
+            gridData.push(cellData);
         });
 
         // データと答えを一つのオブジェクトにまとめる
@@ -261,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 選択したマスの現在の色をカラーピッカーに反映
             const currentColor = editingCell.style.backgroundColor;
             colorInput.value = rgbToHex(currentColor) || '#f0f0f0';
+            fixCellCheckbox.checked = clickedCell.classList.contains('fixed');
         } else {
             // 同じマスをクリックした場合は選択解除
             editingCell = null;

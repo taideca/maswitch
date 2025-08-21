@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // マスをクリックしたときの処理（入れ替え）
     function onCellClick(event) {
         const clickedCell = event.currentTarget;
+        // 固定マスなら何もしない
+        if (clickedCell.classList.contains('fixed')) {
+            return;
+        }
         if (highlightedCell === null) {
             clickedCell.classList.add('highlighted');
             highlightedCell = clickedCell;
@@ -91,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cells[index]) {
                 cells[index].innerHTML = data.content;
                 cells[index].style.backgroundColor = data.color || '';
+                cells[index].classList.toggle('fixed', data.fixed === true);
             }
         });
         shuffleGrid();
@@ -98,27 +103,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // マスをランダムに入れ替え
     function shuffleGrid() {
-        // 現在の盤面の content と color を配列として一時保存
-        const currentGridState = [];
-        cells.forEach(cell => {
-            currentGridState.push({
+        const movableCells = []; // 動かせるマスだけを格納する配列
+        const fixedCells = [];   // 固定マスを格納する配列
+
+        // マスを「動かせるマス」と「固定マス」に分類
+        cells.forEach((cell, index) => {
+            const state = {
                 content: cell.innerHTML,
-                color: cell.style.backgroundColor
-            });
+                color: cell.style.backgroundColor,
+                originalIndex: index // 元の位置を覚えておく
+            };
+            if (cell.classList.contains('fixed')) {
+                fixedCells.push(state);
+            } else {
+                movableCells.push(state);
+            }
         });
 
-        // フィッシャー–イェーツのシャッフルアルゴリズムで配列を並べ替える
-        for (let i = currentGridState.length - 1; i > 0; i--) {
+        // ▼▼▼ 動かせるマスだけをシャッフル ▼▼▼
+        for (let i = movableCells.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            // 要素を交換
-            [currentGridState[i], currentGridState[j]] = [currentGridState[j], currentGridState[i]];
+            [movableCells[i], movableCells[j]] = [movableCells[j], movableCells[i]];
         }
-        
-        // シャッフルされた配列を実際のマスに再適用する
-        currentGridState.forEach((state, index) => {
-            cells[index].innerHTML = state.content;
-            cells[index].style.backgroundColor = state.color;
-        });
+
+        // シャッフル後の動かせるマスと、元の固定マスを結合して盤面を再構築
+        let movableIndex = 0;
+        for (let i = 0; i < cells.length; i++) {
+            // この位置がもともと固定マスだったかチェック
+            const isFixed = fixedCells.some(cell => cell.originalIndex === i);
+            if (!isFixed) {
+                const state = movableCells[movableIndex];
+                cells[i].innerHTML = state.content;
+                cells[i].style.backgroundColor = state.color;
+                movableIndex++;
+            }
+        }
     }
 
     // --- 実行開始 ---

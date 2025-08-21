@@ -21,7 +21,7 @@
   },
   "color1": {
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff"}, {"content":"","color":"#ffffff"},
+      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff","fixed":true}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
@@ -52,7 +52,7 @@
   "onecolon": {
     "data": [
       {"content":"3","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"2","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#000000"}, {"content":"4","color":"#ffffff"}, {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"1","color":"#ffffff"},
+      {"content":"","color":"#000000"}, {"content":"4","color":"#ffffff"}, {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"1","color":"#ffffff","fixed":true},
       {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
       {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
