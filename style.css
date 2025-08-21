@@ -73,7 +73,7 @@ body {
     background-color: #e9e9e9; /* 背景をグレーに */
     border-color: #aa2525;
     cursor: not-allowed; /* カーソルを禁止マークに */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* 少し内側に影をつける */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2); /* 少し内側に影をつける */
 }
 
 /* 画像がマスに収まるように */
