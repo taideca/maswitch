@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.addEventListener('click', onCellClick);
         }
         cells = document.querySelectorAll('.grid-item');
-        // ページを開いたときに、デフォルトの問題を読み込む
-        loadPuzzleById('start'); 
+        // ▼▼▼ ページを開いたときに読み込む謎を設定 ▼▼▼
+        loadPuzzleById('color1'); 
     }
 
     // --- イベントリスナー ---
