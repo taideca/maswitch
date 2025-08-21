@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.classList.add('grid-item');
             // cell.dataset.index = i; // インデックス番号をデータとして保持
             // cell.textContent = i + 1;
-            gridContainer.appendChild(cell);
+            // gridContainer.appendChild(cell);
 
             // クリックイベントを追加
             cell.addEventListener('click', onCellClick);
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('ファイルの読み込みに失敗しました:', error);
-                alert('データの読み込みに失敗しました。puzzles.jsonファイルが存在するか確認してください。');
+                alert('データの読み込みに失敗しました。questions.jsonファイルが存在するか確認してください。');
             });
     });
 
