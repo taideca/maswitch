@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 25; i++) {
             const cell = document.createElement('div');
             cell.classList.add('grid-item');
-            cell.dataset.index = i; // インデックス番号をデータとして保持
-            cell.textContent = i + 1;
+            // cell.dataset.index = i; // インデックス番号をデータとして保持
+            // cell.textContent = i + 1;
             gridContainer.appendChild(cell);
 
             // クリックイベントを追加
