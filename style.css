@@ -4,6 +4,13 @@ body {
     text-align: center;
 }
 
+#status-section {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+}
+
 #answer-section {
     width: 315px;
     margin: 20px auto;

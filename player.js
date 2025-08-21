@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.getElementById('grid-container');
     const answerInput = document.getElementById('answer-input');
     const submitBtn = document.getElementById('submit-btn');
+    const correctCountSpan = document.getElementById('correct-count');
     
     let cells = [];
     let highlightedCell = null;
     let correctAnswer = '';
+    let originalGridState = [];
 
     // --- 初期化処理 ---
     function initializeGrid() {
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(allPuzzles => {
                 const puzzleObject = allPuzzles[puzzleId];
                 if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
+                    originalGridState = JSON.parse(JSON.stringify(puzzleObject.data)); // シャッフル前に正しい盤面をコピー
                     applyGridData(puzzleObject.data); // 盤面データを適用
                     correctAnswer = puzzleObject.answer; // 答えを保存
                 } else {
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickedCell.style.backgroundColor = tempColor;
             highlightedCell.classList.remove('highlighted');
             highlightedCell = null;
+            updateCorrectCount();
         }
     }
     
@@ -138,6 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 movableIndex++;
             }
         }
+
+        updateCorrectCount();
+    }
+
+    // 正しい位置にあるマスの数を数えて表示を更新
+    function updateCorrectCount() {
+        let correctCount = 0;
+        for (let i = 0; i < cells.length; i++) {
+            // 固定マスは常に正しい位置にあるとみなす
+            if (cells[i].classList.contains('fixed')) {
+                correctCount++;
+                continue; // 次のループへ
+            }
+            // 現在のセルの内容と、元の正しいセルの内容を比較
+            if (cells[i].innerHTML === originalGridState[i].content) {
+                correctCount++;
+            }
+        }
+        correctCountSpan.textContent = correctCount;
     }
 
     // --- 実行開始 ---
