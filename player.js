@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cells = document.querySelectorAll('.grid-item');
         // ▼▼▼ ページを開いたときに読み込む謎を設定 ▼▼▼
-        loadPuzzleById('kuku'); 
+        loadPuzzleById('color1'); 
     }
 
     // --- イベントリスナー ---
