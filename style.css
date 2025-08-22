@@ -1,22 +1,34 @@
-/* --- 前回のCSSはそのまま --- */
 body {
     font-family: sans-serif;
     text-align: center;
+    background-color: #7d7d7d;
 
-    /* 1. ベースとなる背景色 */
-    background-color: #7d7d7d; /* 画像に近いグレー */
+    /* 1. 2つの「単色の画像」をグラデーションで作成 */
+    background-image:
+        linear-gradient(to right, #483bff, #483bff),
+        linear-gradient(to right, #d10a5c, #d10a5c),
+        linear-gradient(to right, #d10a5c, #d10a5c),
+        linear-gradient(to right, #483bff, #483bff);
 
-    /* 2. ラインのグラデーションを作成 */
-    background-image: repeating-linear-gradient(
-        to right, /* グラデーションの方向を左から右へ */
-        transparent, /* 最初の色は透明 */
-        transparent 20px, /* 20pxまで透明 */
-        #6b6b6b 20px, /* 20px地点で暗いグレーの線を開始 */
-        #6b6b6b 21px  /* 21pxまで線を描画 (線の太さ1px) */
-    );
+    /* 2. 背景を繰り返さないように設定 */
+    background-repeat: no-repeat;
 
-    /* 3. サイト全体に適用 */
-    min-height: 100vh; /* 画面の高さ全体に背景を広げる */
+    /* 3. 背景の位置をそれぞれ指定 */
+    background-position: 
+        left 8px top,
+        left 16px top,
+        right 16px top,
+        right 8px top;
+
+    /* 4. 背景のサイズを指定 */
+    background-size: 
+        5px 100%,
+        2px 100%,
+        2px 100%, 
+        5px 100%;
+
+    /* 5. スクロールしてもラインが追従するように固定 */
+    background-attachment: fixed;
 }
 
 #status-section {
