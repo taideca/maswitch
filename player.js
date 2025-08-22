@@ -155,12 +155,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 correctCount++;
                 continue; // 次のループへ
             }
-            // 現在のセルの内容と、元の正しいセルの内容を比較
-            if (cells[i] === originalGridState[i]) {
+            // forループの先頭を、こちらに差し替えてください
+            console.log(`--- マス ${i} の比較 ---`);
+            console.log("元のデータ (originalGridState):", originalGridState[i]);
+            console.log("現在のマス (cells):", cells[i]);
+            
+            const originalCell = originalGridState[i]; // 元の正しいマスの状態を取得
+            const currentCellColor = rgbToHex(cells[i].style.backgroundColor); // 現在のマスの色を取得 (rgb形式をhex形式に変換)
+            const originalCellColor = originalCell.color || ""; // 元の正しいマスの色を取得 (空の場合もあるので考慮)
+            const isContentMatch = (cells[i].innerHTML === originalCell.content); // ① マスの内容(innerHTML)が一致しているか？
+            const isColorMatch = (currentCellColor === originalCellColor); // ② マスの背景色が一致しているか？
+
+            // 内容と色の両方が一致していればカウント
+            if (isContentMatch && isColorMatch) {
                 correctCount++;
             }
         }
         correctCountSpan.textContent = correctCount;
+    }
+
+    // RGBを16進数カラーコードに変換
+    function rgbToHex(rgb) {
+        if (!rgb || !rgb.startsWith('rgb')) return rgb; // rgb形式でなければそのまま返す
+        try {
+            const [r, g, b] = rgb.match(/\d+/g).map(Number);
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toLowerCase();
+        } catch (e) {
+            return ''; // 変換に失敗した場合は空文字を返す
+        }
     }
 
     // --- 実行開始 ---
