@@ -15,10 +15,10 @@ body {
 
     /* 3. 背景の位置をそれぞれ指定 */
     background-position: 
-        left 8px top,
-        left 16px top,
-        right 16px top,
-        right 8px top;
+        left 5px top,
+        left 13px top,
+        right 13px top,
+        right 5px top;
 
     /* 4. 背景のサイズを指定 */
     background-size: 
