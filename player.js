@@ -155,10 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 correctCount++;
                 continue; // 次のループへ
             }
-            // forループの先頭を、こちらに差し替えてください
-            console.log(`--- マス ${i} の比較 ---`);
-            console.log("元のデータ (originalGridState):", originalGridState[i]);
-            console.log("現在のマス (cells):", cells[i]);
             
             const originalCell = originalGridState[i]; // 元の正しいマスの状態を取得
             const currentCellColor = rgbToHex(cells[i].style.backgroundColor); // 現在のマスの色を取得 (rgb形式をhex形式に変換)
