@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 continue; // 次のループへ
             }
             // 現在のセルの内容と、元の正しいセルの内容を比較
-            if (cells[i].innerHTML === originalGridState[i].content) {
+            if (cells[i] === originalGridState[i]) {
                 correctCount++;
             }
         }
