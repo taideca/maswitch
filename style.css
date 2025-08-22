@@ -2,6 +2,21 @@
 body {
     font-family: sans-serif;
     text-align: center;
+
+    /* 1. ベースとなる背景色 */
+    background-color: #7d7d7d; /* 画像に近いグレー */
+
+    /* 2. ラインのグラデーションを作成 */
+    background-image: repeating-linear-gradient(
+        to right, /* グラデーションの方向を左から右へ */
+        transparent, /* 最初の色は透明 */
+        transparent 20px, /* 20pxまで透明 */
+        #6b6b6b 20px, /* 20px地点で暗いグレーの線を開始 */
+        #6b6b6b 21px  /* 21pxまで線を描画 (線の太さ1px) */
+    );
+
+    /* 3. サイト全体に適用 */
+    min-height: 100vh; /* 画面の高さ全体に背景を広げる */
 }
 
 #status-section {
