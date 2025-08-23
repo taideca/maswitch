@@ -61,6 +61,25 @@ body {
     height: 100%;
 }
 
+/* メニューの外側を覆うオーバーレイ */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明の黒 */
+    z-index: 104; /* サイドメニュー(105)のすぐ後ろに配置 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+/* サイドメニューが開いているときにオーバーレイを表示する */
+#menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* サイドメニュー本体 */
 #side-menu {
     position: fixed;

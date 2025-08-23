@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctCountSpan = document.getElementById('correct-count');
     const menuToggleBtn = document.getElementById('menu-toggle-btn');
     const sideMenu = document.getElementById('side-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
     const puzzleList = document.getElementById('puzzle-list');
     
     let cells = [];
@@ -56,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // メニュー開閉ボタン
     menuToggleBtn.addEventListener('click', () => {
         sideMenu.classList.toggle('open');
+        menuOverlay.classList.toggle('open');
+    });
+
+    menuOverlay.addEventListener('click', () => {
+        sideMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
     });
 
     submitBtn.addEventListener('click', () => {
@@ -116,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => {
                 loadPuzzleById(key); // ボタンに対応する問題を読み込む
                 sideMenu.classList.remove('open'); // 問題を選んだらメニューを閉じる
+                menuOverlay.classList.remove('open');
             });
             
             listItem.appendChild(button);
