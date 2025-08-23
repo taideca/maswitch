@@ -155,9 +155,35 @@ document.addEventListener('DOMContentLoaded', () => {
             highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
             clickedCell.innerHTML = tempContent;
             clickedCell.style.backgroundColor = tempColor;
+            adjustFontSize(highlightedCell);
+            adjustFontSize(clickedCell);
             highlightedCell.classList.remove('highlighted');
             highlightedCell = null;
             updateCorrectCount();
+        }
+    }
+
+    function adjustFontSize(cell) {
+        // 画像タグが含まれている場合は調整しない
+        if (cell.querySelector('img')) {
+            cell.style.fontSize = ''; // 画像がある場合はフォントサイズをリセット
+            return;
+        }
+
+        // 一旦フォントサイズをリセットして、デフォルトの大きさに戻す
+        cell.style.fontSize = '';
+
+        // 内容がマスからはみ出している間、ループで少しずつフォントを小さくする
+        // clientWidth はマスの内側の幅、scrollWidth は内容全体の幅
+        let currentSize = parseInt(window.getComputedStyle(cell).fontSize, 10);
+        while (cell.scrollWidth > cell.clientWidth || cell.scrollHeight > cell.clientHeight) {
+            currentSize--;
+            cell.style.fontSize = `${currentSize}px`;
+
+            // フォントが小さくなりすぎたらループを抜ける
+            if (currentSize <= 8) {
+                break;
+            }
         }
     }
     
@@ -168,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].innerHTML = data.content;
                 cells[index].style.backgroundColor = data.color || '';
                 cells[index].classList.toggle('fixed', data.fixed === true);
+                adjustFontSize(cells[index]);
             }
         });
         shuffleGrid();

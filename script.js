@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editingCell) {
             editingCell.innerHTML = '';
             editingCell.textContent = textInput.value;
+            adjustFontSize(editingCell);
         } else {
             alert('編集したいマスを先にクリックしてください！');
         }
@@ -294,6 +295,30 @@ document.addEventListener('DOMContentLoaded', () => {
             panels[currentMode].classList.remove('hidden');
         }
     }
+
+    function adjustFontSize(cell) {
+        // 画像タグが含まれている場合は調整しない
+        if (cell.querySelector('img')) {
+            cell.style.fontSize = ''; // 画像がある場合はフォントサイズをリセット
+            return;
+        }
+
+        // 一旦フォントサイズをリセットして、デフォルトの大きさに戻す
+        cell.style.fontSize = '';
+
+        // 内容がマスからはみ出している間、ループで少しずつフォントを小さくする
+        // clientWidth はマスの内側の幅、scrollWidth は内容全体の幅
+        let currentSize = parseInt(window.getComputedStyle(cell).fontSize, 10);
+        while (cell.scrollWidth > cell.clientWidth || cell.scrollHeight > cell.clientHeight) {
+            currentSize--;
+            cell.style.fontSize = `${currentSize}px`;
+
+            // フォントが小さくなりすぎたらループを抜ける
+            if (currentSize <= 8) {
+                break;
+            }
+        }
+    }
     
     // 盤面データ適用
     function applyGridData(gridData) {
@@ -301,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cells[index]) {
                 cells[index].innerHTML = data.content;
                 cells[index].style.backgroundColor = data.color || '';
+                adjustFontSize(cells[index]);
             }
         });
     }
