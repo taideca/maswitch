@@ -48,8 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.addEventListener('click', onCellClick);
         }
         cells = document.querySelectorAll('.grid-item');
-        // ▼▼▼ ページを開いたときに読み込む謎を設定 ▼▼▼
-        // loadPuzzleById('rule'); 
         loadAllPuzzles();
     }
 
@@ -101,9 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 問題リストをサイドメニューに生成する
     function populatePuzzleList() {
         puzzleList.innerHTML = ''; // リストを一旦空にする
-        const puzzleKeys = Object.keys(allPuzzles); // "start", "puzzle1" などのキーを取得
+        const allPuzzleKeys = Object.keys(allPuzzles); // 問題のIDを取得
+        const excludedIds = ['template', 'rule']; // 除外したいIDのリストを定義
+        const filteredKeys = allPuzzleKeys.filter(key => !excludedIds.includes(key)); // 除外リストに含まれないIDだけを抽出
 
-        puzzleKeys.forEach((key, index) => {
+        filteredKeys.forEach((key, index) => {
             const listItem = document.createElement('li');
             const button = document.createElement('button');
             
@@ -133,19 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error(`ID:「${puzzleId}」のデータが見つかりません。`);
         }
-        // fetch('questions.json')
-        //     .then(response => response.json())
-        //     .then(allPuzzles => {
-        //         const puzzleObject = allPuzzles[puzzleId];
-        //         if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
-        //             originalGridState = JSON.parse(JSON.stringify(puzzleObject.data)); // シャッフル前に正しい盤面をコピー
-        //             applyGridData(puzzleObject.data); // 盤面データを適用
-        //             correctAnswer = puzzleObject.answer; // 答えを保存
-        //         } else {
-        //             console.error(`ID:「${puzzleId}」のデータまたは答えが見つかりません。`);
-        //         }
-        //     })
-        //     .catch(error => console.error('questions.jsonの読み込みに失敗:', error));
     }
 
     // マスをクリックしたときの処理（入れ替え）
