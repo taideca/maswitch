@@ -31,6 +31,100 @@ body {
     background-attachment: fixed;
 }
 
+/* 新しく追加したヘッダーのスタイル */
+.page-header {
+    display: flex;         /* 横並びにする */
+    align-items: center;   /* 上下の高さを中央揃えにする */
+    justify-content: center; /* 左右方向の中央揃え */
+    position: relative;    /* アイコンを配置する際の基準 */
+    width: 100%;
+}
+
+/* h1タグの左右の余白を自動調整して中央を保つ */
+.page-header h1 {
+    margin: 10px auto; /* 上下に10px、左右に自動の余白 */
+}
+
+/* メニューを開くアイコンボタン */
+#menu-toggle-btn {
+    position: absolute; /* ヘッダー(page-header)を基準に配置 */
+    left: 20px;       /* ヘッダーの左端から15px */
+    top: 50%;
+    transform: translateY(-50%); /* アイコン自身の高さの半分だけ上に移動 */
+    width: 24px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 110; /* サイドメニューより手前に表示 */
+}
+#menu-toggle-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+/* サイドメニュー本体 */
+#side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* 最初は画面の左外に隠す */
+    width: 280px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 105;
+    transition: left 0.3s ease-in-out; /* スライドアニメーション */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* 問題が多くなったらスクロールできるように */
+}
+/* サイドメニューが表示されているときのスタイル */
+#side-menu.open {
+    left: 0; /* 画面内に表示 */
+}
+#side-menu h2 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 問題リストのスタイル */
+#puzzle-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#puzzle-list li button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+#puzzle-list li button:hover {
+    background-color: #e9ecef;
+}
+
+/* ポップアップを開くボタンのスタイル */
+#open-rules-btn {
+    position: absolute; /* ヘッダー(page-header)を基準に配置 */
+    right: 20px;       /* ヘッダーの左端から15px */
+    top: 50%;
+    transform: translateY(-50%); /* アイコン自身の高さの半分だけ上に移動 */
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+#open-rules-btn img {
+    width: 100%;
+    height: 100%;
+}
+
 #status-section {
     margin-top: 20px;
     font-size: 1.1em;
@@ -208,14 +302,6 @@ hr {
     cursor: pointer;
 }
 
-/* ポップアップを開くボタンのスタイル */
-#open-rules-btn {
-    display: block;
-    margin: 0 auto 15px;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-
 /* 画面全体を覆う黒い半透明の背景 (オーバーレイ) */
 #popup-overlay {
     position: fixed; /* 画面に固定 */
@@ -286,72 +372,4 @@ hr {
 #popup-overlay.hidden {
     opacity: 0;
     visibility: hidden;
-}
-
-/* メニューを開くアイコンボタン */
-#menu-toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 30px;
-    width: 24px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 110; /* サイドメニューより手前に表示 */
-}
-#menu-toggle-btn img {
-    width: 100%;
-    height: 100%;
-}
-
-/* サイドメニュー本体 */
-#side-menu {
-    position: fixed;
-    top: 0;
-    left: -300px; /* 最初は画面の左外に隠す */
-    width: 280px;
-    height: 100%;
-    background-color: #f8f9fa;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    z-index: 105;
-    transition: left 0.3s ease-in-out; /* スライドアニメーション */
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto; /* 問題が多くなったらスクロールできるように */
-}
-
-/* サイドメニューが表示されているときのスタイル */
-#side-menu.open {
-    left: 0; /* 画面内に表示 */
-}
-
-#side-menu h2 {
-    margin-top: 0;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* 問題リストのスタイル */
-#puzzle-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#puzzle-list li button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 8px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 1em;
-    transition: background-color 0.2s;
-}
-
-#puzzle-list li button:hover {
-    background-color: #e9ecef;
 }
