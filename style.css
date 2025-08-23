@@ -292,9 +292,9 @@ hr {
 #menu-toggle-btn {
     position: fixed;
     top: 20px;
-    left: 25px;
-    width: 22px;
-    height: 20px;
+    left: 30px;
+    width: 24px;
+    height: 21px;
     cursor: pointer;
     z-index: 110; /* サイドメニューより手前に表示 */
 }
