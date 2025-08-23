@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cells = document.querySelectorAll('.grid-item');
         // ▼▼▼ ページを開いたときに読み込む謎を設定 ▼▼▼
-        loadPuzzleById('color1'); 
+        loadPuzzleById('rule'); 
     }
 
     // --- イベントリスナー ---
