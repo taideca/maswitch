@@ -28,11 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const answerInput = document.getElementById('answer-input');
     const submitBtn = document.getElementById('submit-btn');
     const correctCountSpan = document.getElementById('correct-count');
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const sideMenu = document.getElementById('side-menu');
+    const puzzleList = document.getElementById('puzzle-list');
     
     let cells = [];
     let highlightedCell = null;
     let correctAnswer = '';
     let originalGridState = [];
+    let allPuzzles = {};
 
     // --- 初期化処理 ---
     function initializeGrid() {
@@ -45,10 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cells = document.querySelectorAll('.grid-item');
         // ▼▼▼ ページを開いたときに読み込む謎を設定 ▼▼▼
-        loadPuzzleById('rule'); 
+        // loadPuzzleById('rule'); 
+        loadAllPuzzles();
     }
 
     // --- イベントリスナー ---
+
+    // メニュー開閉ボタン
+    menuToggleBtn.addEventListener('click', () => {
+        sideMenu.classList.toggle('open');
+    });
+
     submitBtn.addEventListener('click', () => {
         const userAnswer = answerInput.value.trim();
         if (!userAnswer) {
@@ -74,21 +85,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 主要な関数 ---
 
-    // IDを指定してquestions.jsonから問題を読み込む
-    function loadPuzzleById(puzzleId) {
+    // 最初に一度だけ、questions.jsonを全て読み込む
+    function loadAllPuzzles() {
         fetch('questions.json')
             .then(response => response.json())
-            .then(allPuzzles => {
-                const puzzleObject = allPuzzles[puzzleId];
-                if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
-                    originalGridState = JSON.parse(JSON.stringify(puzzleObject.data)); // シャッフル前に正しい盤面をコピー
-                    applyGridData(puzzleObject.data); // 盤面データを適用
-                    correctAnswer = puzzleObject.answer; // 答えを保存
-                } else {
-                    console.error(`ID:「${puzzleId}」のデータまたは答えが見つかりません。`);
-                }
+            .then(puzzles => {
+                allPuzzles = puzzles;
+                populatePuzzleList(); // 問題リストをメニューに生成
+                // ▼▼▼ 初期問題の設定 ▼▼▼
+                loadPuzzleById('color1');
             })
             .catch(error => console.error('questions.jsonの読み込みに失敗:', error));
+    }
+    
+    // 問題リストをサイドメニューに生成する
+    function populatePuzzleList() {
+        puzzleList.innerHTML = ''; // リストを一旦空にする
+        const puzzleKeys = Object.keys(allPuzzles); // "start", "puzzle1" などのキーを取得
+
+        puzzleKeys.forEach((key, index) => {
+            const listItem = document.createElement('li');
+            const button = document.createElement('button');
+            
+            // "No.001" のようにゼロ埋めして表示
+            button.textContent = `No.${String(index + 1).padStart(3, '0')}`;
+            
+            // ボタンに、対応する問題のキー(ID)をデータとして埋め込む
+            button.dataset.puzzleId = key;
+            
+            button.addEventListener('click', () => {
+                loadPuzzleById(key); // ボタンに対応する問題を読み込む
+                sideMenu.classList.remove('open'); // 問題を選んだらメニューを閉じる
+            });
+            
+            listItem.appendChild(button);
+            puzzleList.appendChild(listItem);
+        });
+    }
+
+    // IDを指定してquestions.jsonから問題を読み込む
+    function loadPuzzleById(puzzleId) {
+        const puzzleObject = allPuzzles[puzzleId];
+        if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
+            originalGridState = JSON.parse(JSON.stringify(puzzleObject.data));
+            applyGridData(puzzleObject.data);
+            correctAnswer = puzzleObject.answer;
+        } else {
+            console.error(`ID:「${puzzleId}」のデータが見つかりません。`);
+        }
+        // fetch('questions.json')
+        //     .then(response => response.json())
+        //     .then(allPuzzles => {
+        //         const puzzleObject = allPuzzles[puzzleId];
+        //         if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
+        //             originalGridState = JSON.parse(JSON.stringify(puzzleObject.data)); // シャッフル前に正しい盤面をコピー
+        //             applyGridData(puzzleObject.data); // 盤面データを適用
+        //             correctAnswer = puzzleObject.answer; // 答えを保存
+        //         } else {
+        //             console.error(`ID:「${puzzleId}」のデータまたは答えが見つかりません。`);
+        //         }
+        //     })
+        //     .catch(error => console.error('questions.jsonの読み込みに失敗:', error));
     }
 
     // マスをクリックしたときの処理（入れ替え）

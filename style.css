@@ -287,3 +287,71 @@ hr {
     opacity: 0;
     visibility: hidden;
 }
+
+/* メニューを開くアイコンボタン */
+#menu-toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 110; /* サイドメニューより手前に表示 */
+}
+#menu-toggle-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+/* サイドメニュー本体 */
+#side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* 最初は画面の左外に隠す */
+    width: 280px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 105;
+    transition: left 0.3s ease-in-out; /* スライドアニメーション */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* 問題が多くなったらスクロールできるように */
+}
+
+/* サイドメニューが表示されているときのスタイル */
+#side-menu.open {
+    left: 0; /* 画面内に表示 */
+}
+
+#side-menu h2 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 問題リストのスタイル */
+#puzzle-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#puzzle-list li button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+#puzzle-list li button:hover {
+    background-color: #e9ecef;
+}
