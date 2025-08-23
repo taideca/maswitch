@@ -116,8 +116,8 @@ body {
     right: 20px;       /* ヘッダーの左端から15px */
     top: 50%;
     transform: translateY(-50%); /* アイコン自身の高さの半分だけ上に移動 */
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
 }
 #open-rules-btn img {
