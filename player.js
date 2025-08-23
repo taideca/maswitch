@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggleBtn = document.getElementById('menu-toggle-btn');
     const sideMenu = document.getElementById('side-menu');
     const menuOverlay = document.getElementById('menu-overlay');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
     const puzzleList = document.getElementById('puzzle-list');
     
     let cells = [];
@@ -56,13 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // メニュー開閉ボタン
     menuToggleBtn.addEventListener('click', () => {
-        sideMenu.classList.toggle('open');
-        menuOverlay.classList.toggle('open');
+        sideMenu.classList.add('open');
+        menuOverlay.classList.add('open');
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+        closeMenu();
     });
 
     menuOverlay.addEventListener('click', () => {
-        sideMenu.classList.remove('open');
-        menuOverlay.classList.remove('open');
+        closeMenu();
     });
 
     submitBtn.addEventListener('click', () => {
@@ -89,6 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 主要な関数 ---
+
+    // メニューを閉じる処理
+    function closeMenu() {
+        sideMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+    }
 
     // 最初に一度だけ、questions.jsonを全て読み込む
     function loadAllPuzzles() {

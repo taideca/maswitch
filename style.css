@@ -54,7 +54,7 @@ body {
     width: 24px;
     height: 21px;
     cursor: pointer;
-    z-index: 110; /* サイドメニューより手前に表示 */
+    z-index: 100; /* サイドメニューより手前に表示 */
 }
 #menu-toggle-btn img {
     width: 100%;
@@ -99,11 +99,34 @@ body {
 #side-menu.open {
     left: 0; /* 画面内に表示 */
 }
+/* サイドメニューのヘッダー */
+.menu-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* 新しい「<」閉じるボタン */
+#close-menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    padding: 0 15px 0 0;
+}
+#close-menu-btn:hover {
+    color: #000;
+}
 #side-menu h2 {
     margin-top: 0;
     text-align: center;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+    flex-grow: 1;
 }
 
 /* 問題リストのスタイル */
