@@ -208,7 +208,7 @@ hr {
     cursor: pointer;
 }
 
-/* ポップアップを開くボタンのスタイル (お好みで) */
+/* ポップアップを開くボタンのスタイル */
 #open-rules-btn {
     display: block;
     margin: 0 auto 15px;
@@ -245,6 +245,7 @@ hr {
     max-width: 500px;
     width: 90%;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
 }
 
 #popup-content h2 {
@@ -261,12 +262,24 @@ hr {
 
 /* ポップアップを閉じるボタン */
 #close-rules-btn {
-    display: block;
-    margin: 20px auto 0;
-    padding: 8px 16px;
-    cursor: pointer;
+    position: absolute;   /* 親要素(popup-content)を基準に配置 */
+    top: 10px;            /* 上から10px */
+    right: 15px;          /* 右から15px */
+    
+    /* 見た目を「×」らしくする */
+    background: none;     /* 背景をなくす */
+    border: none;         /* 枠線をなくす */
+    font-size: 28px;      /* 文字(×)のサイズ */
+    color: #555;          /* 文字(×)の色 */
+    cursor: pointer;      /* カーソルをポインターに */
+    padding: 0;           /* 余白をなくす */
+    line-height: 1;       /* 行の高さを調整 */
 }
 
+/* マウスが乗ったときに少し濃くする */
+#close-rules-btn:hover {
+    color: #000;
+}
 
 /* ポップアップを非表示にするためのクラス */
 #popup-overlay.hidden {
