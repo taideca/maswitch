@@ -10,6 +10,7 @@
 <body>
 
     <h1>マスゲーム</h1>
+    <button id="open-rules-btn">ルール説明</button>
     <p>マスをクリックで入れ替えて、謎を解き明かそう！</p>
 
     <div id="status-section">
@@ -21,6 +22,21 @@
     <div id="answer-section">
         <input type="text" id="answer-input" placeholder="答えを入力（ひらがな）">
         <button id="submit-btn">回答する</button>
+    </div>
+
+    <div id="popup-overlay" class="hidden">
+        <div id="popup-content">
+            <h2>ルール</h2>
+            <ol>
+                <img src="pictures/howtoplay.png" alt="パネル入れ替えの例" style="max-width: 100%; height: auto; margin-top: 10px;">
+                <li>バラバラになったマスを入れ替えて、正しい謎を完成させましょう。</li>
+                <li>マスをクリックするとハイライトされます。</li>
+                <li>続けて別のマスをクリックすると、2つのマスが入れ替えられます。</li>
+                <li>赤枠の「固定マス」は動かせず、必ずそのマスに位置します。</li>
+                <li>謎が解けたら、ひらがなで答えを入力して「回答する」ボタンを押してください。</li>
+            </ol>
+            <button id="close-rules-btn">閉じる</button>
+        </div>
     </div>
 
     <script src="player.js"></script>

@@ -1,5 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- ポップアップ関連の要素を取得 ---
+    const openRulesBtn = document.getElementById('open-rules-btn');
+    const closeRulesBtn = document.getElementById('close-rules-btn');
+    const popupOverlay = document.getElementById('popup-overlay');
+
+    // --- ポップアップのイベントリスナー ---
+    // 「遊び方を見る」ボタンが押されたら、hiddenクラスを外して表示
+    openRulesBtn.addEventListener('click', () => {
+        popupOverlay.classList.remove('hidden');
+    });
+
+    // 「閉じる」ボタンが押されたら、hiddenクラスを付けて非表示
+    closeRulesBtn.addEventListener('click', () => {
+        popupOverlay.classList.add('hidden');
+    });
+
+    // 背景の黒い部分が押されたときも、ポップアップを閉じる
+    popupOverlay.addEventListener('click', (event) => {
+        // クリックされたのが背景自身(popup-overlay)の場合のみ閉じる
+        if (event.target === popupOverlay) {
+            popupOverlay.classList.add('hidden');
+        }
+    });
+
     const gridContainer = document.getElementById('grid-container');
     const answerInput = document.getElementById('answer-input');
     const submitBtn = document.getElementById('submit-btn');

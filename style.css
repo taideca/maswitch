@@ -1,7 +1,7 @@
 body {
     font-family: sans-serif;
     text-align: center;
-    background-color: #7d7d7d;
+    background-color: #ffffff;
 
     /* 1. 2つの「単色の画像」をグラデーションで作成 */
     background-image:
@@ -206,4 +206,70 @@ hr {
     padding: 2px;
     border: 1px solid #ccc;
     cursor: pointer;
+}
+
+/* ポップアップを開くボタンのスタイル (お好みで) */
+#open-rules-btn {
+    display: block;
+    margin: 0 auto 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* 画面全体を覆う黒い半透明の背景 (オーバーレイ) */
+#popup-overlay {
+    position: fixed; /* 画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 黒の60%透過 */
+    z-index: 100; /* 他の要素より手前に表示 */
+
+    /* 内容を中央揃えにする */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 表示・非表示を滑らかにするアニメーション */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* ポップアップの本体 (白いボックス) */
+#popup-content {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#popup-content h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+#popup-content ol {
+    padding-left: 20px;
+}
+#popup-content li {
+    margin-bottom: 10px;
+}
+
+/* ポップアップを閉じるボタン */
+#close-rules-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+
+/* ポップアップを非表示にするためのクラス */
+#popup-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
