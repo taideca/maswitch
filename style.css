@@ -250,7 +250,7 @@ hr {
 
 #popup-content h2 {
     margin-top: 0;
-    text-align: left;
+    text-align: center;
 }
 
 #popup-content ol {
@@ -258,6 +258,7 @@ hr {
 }
 #popup-content li {
     margin-bottom: 10px;
+    text-align: left;
 }
 
 /* ポップアップを閉じるボタン */
