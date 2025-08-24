@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedTarget === 'background') {
             editingCell.style.backgroundColor = newColor;
         } else if (selectedTarget === 'border') {
-            editingCell.style.borderColor = newColor;
+            editingCell.dataset.borderColor = newColor; // 枠線の色データはdatasetに保存し、見た目は影(boxShadow)にのみ適用
             editingCell.style.boxShadow = `inset 0 0 0 2px ${newColor}`;
         }
     });
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.innerHTML,
                 cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "",
                 cell.style.color ? rgbToHex(cell.style.color) : "",
-                cell.style.borderColor ? rgbToHex(cell.style.borderColor) : "",
+                cell.dataset.borderColor || "", // 枠線色はdatasetから取得
                 cell.classList.contains('fixed') ? 1 : 0 // 固定なら1, そうでなければ0
             ];
             gridData.push(cellData);
@@ -190,7 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const puzzleObject = allPuzzles[loadId]; // IDに一致するデータを取得
 
                 if (puzzleObject && puzzleObject.data) {
-                    applyGridData(puzzleObject.data);
+                    applyGridData(puzzleObject.data); // オブジェクトの中の "data" 配列だけを渡す
+                    answerKeyInput.value = puzzleObject.answer || ''; // 答えもフォームに反映
                     alert(`ID:「${loadId}」の盤面を読み込みました。`);
                 } else {
                     alert(`ID:「${loadId}」のデータが見つかりません。`);
@@ -203,6 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 主要な関数 ---
+
+    // マスがクリックされたときの処理
+    function onCellClick(event) {
+        const clickedCell = event.currentTarget;
+        if (currentMode === 'swap') {
+            handleSwapMode(clickedCell);
+        } else if (currentMode === 'edit') {
+            handleEditMode(clickedCell);
+        }
+        // searchモードではマスをクリックしても何もしない
+    }
 
     // 5x5形式でJSONテキストを整形する関数
     function formatJsonForGrid(puzzleObject) {
@@ -232,17 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
         output = output.trimEnd() + '\n  ]\n}';
         return output;
     }
-
-    // マスがクリックされたときの処理
-    function onCellClick(event) {
-        const clickedCell = event.currentTarget;
-        if (currentMode === 'swap') {
-            handleSwapMode(clickedCell);
-        } else if (currentMode === 'edit') {
-            handleEditMode(clickedCell);
-        }
-        // searchモードではマスをクリックしても何もしない
-    }
     
     // 入れ替えモードの処理
     function handleSwapMode(clickedCell) {
@@ -262,14 +263,28 @@ document.addEventListener('DOMContentLoaded', () => {
             highlightedCell = null;
         } else {
             // 3. 2つ目のマスを選択したら、中身と色を入れ替える
-            const tempContent = highlightedCell.innerHTML;
-            const tempColor = highlightedCell.style.backgroundColor;
-            
+            // 全ての関連プロパティを一時変数に保存
+            const temp = {
+                content: highlightedCell.innerHTML,
+                bgColor: highlightedCell.style.backgroundColor,
+                textColor: highlightedCell.style.color,
+                borderColor: highlightedCell.dataset.borderColor,
+                boxShadow: highlightedCell.style.boxShadow
+            };
+
+            // highlightedCell に clickedCell のプロパティを適用
             highlightedCell.innerHTML = clickedCell.innerHTML;
             highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
-            
-            clickedCell.innerHTML = tempContent;
-            clickedCell.style.backgroundColor = tempColor;
+            highlightedCell.style.color = clickedCell.style.color;
+            highlightedCell.dataset.borderColor = clickedCell.dataset.borderColor;
+            highlightedCell.style.boxShadow = clickedCell.style.boxShadow;
+
+            // clickedCell に temp のプロパティを適用
+            clickedCell.innerHTML = temp.content;
+            clickedCell.style.backgroundColor = temp.bgColor;
+            clickedCell.style.color = temp.textColor;
+            clickedCell.dataset.borderColor = temp.borderColor;
+            clickedCell.style.boxShadow = temp.boxShadow;
 
             // 入れ替え終わったら選択状態をリセット
             highlightedCell.classList.remove('highlighted');
@@ -314,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedTarget === 'background') {
             targetColor = editingCell.style.backgroundColor;
         } else if (selectedTarget === 'border') {
-            targetColor = editingCell.style.borderColor;
+            targetColor = editingCell.dataset.borderColor;
         }
 
         mainColorPicker.value = rgbToHex(targetColor) || (selectedTarget === 'text' ? '#000000' : '#cccccc');
@@ -356,10 +371,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 盤面データ適用
     function applyGridData(gridData) {
-        gridData.forEach((data, index) => {
+        gridData.forEach((dataArray, index) => {
             if (cells[index]) {
-                cells[index].innerHTML = data.content;
-                cells[index].style.backgroundColor = data.color || '';
+                const cell = cells[index];
+                cell.innerHTML = dataArray[0] || '';
+                cell.style.backgroundColor = dataArray[1] || '';
+                cell.style.color = dataArray[2] || '';
+                const borderColor = dataArray[3] || '';
+                cell.dataset.borderColor = borderColor; // データとして保存
+                cell.style.borderColor = ''; // 枠線の色はデフォルトに戻す
+                cell.style.boxShadow = borderColor ? `inset 0 0 0 2px ${borderColor}` : ''; // 影のみ色を適用
+                const isFixed = dataArray[4] === 1;
+                cell.classList.toggle('fixed', isFixed);
                 // adjustFontSize(cells[index]);
             }
         });
