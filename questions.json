@@ -82,11 +82,11 @@
   "law": {
     "answer": "いけす",
     "data": [
-      ["国", "#ffffff", "", "", 0], ["道", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["駆", "#ffffff", "", "", 0], ["動", "#ffffff", "", "", 0], 
-      ["投", "#ffffff", "", "", 0], ["下", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["羽", "#ffffff", "", "", 0], ["化", "#ffffff", "", "", 0], 
-      ["", "#ffffff", "", "", 0], ["頭", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0000ff", "", "", 0], ["数", "#ffffff", "", "", 0], ["多", "#ffffff", "", "", 0], 
-      ["偉", "#ffffff", "", "", 0], ["人", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0000ff", "", "", 0], ["虹", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
-      ["宝", "#ffffff", "", "", 0], ["石", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0000ff", "", "", 0], ["?", "#ffffff", "", "", 0]
+      ["国", "#ffffff", "", "", 0], ["道", "#ffffff", "", "", 0], ["➡", "#ffffff", "#ff0000", "", 0], ["駆", "#ffffff", "", "", 0], ["動", "#ffffff", "", "", 0], 
+      ["投", "#ffffff", "", "", 0], ["下", "#ffffff", "", "", 0], ["➡", "#ffffff", "#ff0000", "", 0], ["羽", "#ffffff", "", "", 0], ["化", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["頭", "#ffffff", "", "", 0], ["➡", "#ffffff", "#0000ff", "", 0], ["数", "#ffffff", "", "", 0], ["多", "#ffffff", "", "", 0], 
+      ["偉", "#ffffff", "", "", 0], ["人", "#ffffff", "", "", 0], ["➡", "#ffffff", "#0000ff", "", 0], ["虹", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["宝", "#ffffff", "", "", 0], ["石", "#ffffff", "", "", 0], ["➡", "#ffffff", "#ff0000", "", 0], ["➡", "#ffffff", "#0000ff", "", 0], ["?", "#ffffff", "", "", 0]
     ]
   }
 }
