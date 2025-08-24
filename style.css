@@ -221,8 +221,8 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     overflow: hidden; /* 画像がはみ出ないように */
-    padding: 4px;
-    /* box-sizing: border-box; */
+    /* padding: 4px; */
+    box-sizing: border-box;
 }
 
 .grid-item:hover {
