@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // ▼▼▼ 合言葉を入力すると開発者ページに移動 ▼▼▼
-        if (userAnswer === 'iamadeveloper') { // ← この合言葉を自由に変更してください
+        if (userAnswer === 'iamadeveloper') { 
             alert('開発者モードに切り替えます。');
             window.location.href = 'admin.html'; // admin.htmlにページ遷移
             return;
@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadPuzzleById(puzzleId) {
         const puzzleObject = allPuzzles[puzzleId];
         if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
+            // originalGridState にも配列形式のまま保存
             originalGridState = JSON.parse(JSON.stringify(puzzleObject.data));
             applyGridData(puzzleObject.data);
             correctAnswer = puzzleObject.answer;
@@ -207,12 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 盤面データ適用
     function applyGridData(gridData) {
-        gridData.forEach((data, index) => {
+        gridData.forEach((dataArray, index) => {
             if (cells[index]) {
-                cells[index].innerHTML = data.content;
-                cells[index].style.backgroundColor = data.color || '';
-                cells[index].classList.toggle('fixed', data.fixed === true);
-                adjustFontSize(cells[index]);
+                cells[index].innerHTML = dataArray[0] || '';
+                cells[index].style.backgroundColor = dataArray[1] || '';
+                cells[index].style.color = dataArray[2] || '';
+                const borderColor = dataArray[3] || ''; // 枠線の色を取得
+                cells[index].style.borderColor = borderColor; // 枠線の色を適用
+                cells[index].style.boxShadow = borderColor ? `inset 0 0 0 2px ${borderColor}` : ''; // 内側の影も同じ色で適用
+                const isFixed = dataArray[4] === 1;
+                cells[index].classList.toggle('fixed', isFixed);
+                // adjustFontSize(cells[index]);
             }
         });
         shuffleGrid();
@@ -268,15 +274,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 correctCount++;
                 continue; // 次のループへ
             }
-            
-            const originalCell = originalGridState[i]; // 元の正しいマスの状態を取得
-            const currentCellColor = rgbToHex(cells[i].style.backgroundColor); // 現在のマスの色を取得 (rgb形式をhex形式に変換)
-            const originalCellColor = originalCell.color || ""; // 元の正しいマスの色を取得 (空の場合もあるので考慮)
-            const isContentMatch = (cells[i].innerHTML === originalCell.content); // ① マスの内容(innerHTML)が一致しているか？
-            const isColorMatch = (currentCellColor === originalCellColor); // ② マスの背景色が一致しているか？
 
-            // 内容と色の両方が一致していればカウント
-            if (isContentMatch && isColorMatch) {
+            const isMatch = 
+                cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
+                rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
+                rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") && // コンテンツの色の一致
+                rgbToHex(cells[i].style.borderColor) === (originalGridState[i][3] || ""); // 枠線の色の一致
+
+            if (isMatch) {
                 correctCount++;
             }
         }

@@ -16,12 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateTextBtn = document.getElementById('update-text-btn');
     const imageNameInput = document.getElementById('image-name-input');
     const updateImageBtn = document.getElementById('update-image-btn');
-    const colorInput = document.getElementById('color-input');
+    const mainColorPicker = document.getElementById('main-color-picker');
+    const colorTargetRadios = document.querySelectorAll('input[name="colorTarget"]');
+    const answerKeyInput = document.getElementById('answer-key-input');
+    const fixCellCheckbox = document.getElementById('fix-cell-checkbox');
     const generateCodeBtn = document.getElementById('generate-code-btn');
     const copyCodeBtn = document.getElementById('copy-code-btn');
     const outputTextarea = document.getElementById('output-textarea');
-    const answerKeyInput = document.getElementById('answer-key-input');
-    const fixCellCheckbox = document.getElementById('fix-cell-checkbox');
 
     // 検索パネルの要素
     const loadIdInput = document.getElementById('load-id-input');
@@ -98,11 +99,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // カラーピッカー
-    colorInput.addEventListener('input', () => {
-        if (editingCell) {
-            editingCell.style.backgroundColor = colorInput.value;
+    // カラーピッカーの値が変更されたら、選択中の適用先に色を反映
+    mainColorPicker.addEventListener('input', () => {
+        if (!editingCell) return;
+        
+        const selectedTarget = document.querySelector('input[name="colorTarget"]:checked').value;
+        const newColor = mainColorPicker.value;
+
+        if (selectedTarget === 'text') {
+            editingCell.style.color = newColor;
+        } else if (selectedTarget === 'background') {
+            editingCell.style.backgroundColor = newColor;
+        } else if (selectedTarget === 'border') {
+            editingCell.style.borderColor = newColor;
+            editingCell.style.boxShadow = `inset 0 0 0 2px ${newColor}`;
         }
+    });
+
+    // ラジオボタン(適用先)が変更されたら、カラーピッカーの現在の色を更新
+    colorTargetRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            updateColorPickerValue();
+        });
     });
 
     // 【開発者向け】盤面データを出力するボタンの処理
@@ -115,13 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const gridData = [];
         cells.forEach(cell => {
-            const cellData = {
-                content: cell.innerHTML,
-                color: cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : ""
-            };
-            if (cell.classList.contains('fixed')) {
-                cellData.fixed = true;
-            }
+            const cellData = [
+                cell.innerHTML,
+                cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "",
+                cell.style.color ? rgbToHex(cell.style.color) : "",
+                cell.style.borderColor ? rgbToHex(cell.style.borderColor) : "",
+                cell.classList.contains('fixed') ? 1 : 0 // 固定なら1, そうでなければ0
+            ];
             gridData.push(cellData);
         });
 
@@ -276,14 +294,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editingCell !== clickedCell) {
             clickedCell.classList.add('editing');
             editingCell = clickedCell;
-            // 選択したマスの現在の色をカラーピッカーに反映
-            const currentColor = editingCell.style.backgroundColor;
-            colorInput.value = rgbToHex(currentColor) || '#f0f0f0';
-            fixCellCheckbox.checked = clickedCell.classList.contains('fixed');
+            updateColorPickerValue();
+            fixCellCheckbox.checked = editingCell.classList.contains('fixed');
         } else {
             // 同じマスをクリックした場合は選択解除
             editingCell = null;
         }
+    }
+
+    // カラーピッカーに表示する色を、選択中の適用先に応じて更新する関数
+    function updateColorPickerValue() {
+        if (!editingCell) return;
+
+        const selectedTarget = document.querySelector('input[name="colorTarget"]:checked').value;
+        let targetColor = '';
+
+        if (selectedTarget === 'text') {
+            targetColor = editingCell.style.color;
+        } else if (selectedTarget === 'background') {
+            targetColor = editingCell.style.backgroundColor;
+        } else if (selectedTarget === 'border') {
+            targetColor = editingCell.style.borderColor;
+        }
+
+        mainColorPicker.value = rgbToHex(targetColor) || (selectedTarget === 'text' ? '#000000' : '#cccccc');
     }
 
     // パネルの表示を更新
@@ -326,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cells[index]) {
                 cells[index].innerHTML = data.content;
                 cells[index].style.backgroundColor = data.color || '';
-                adjustFontSize(cells[index]);
+                // adjustFontSize(cells[index]);
             }
         });
     }

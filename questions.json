@@ -1,92 +1,92 @@
 {
-  "template":{
+  "template": {
     "answer": "あんみか",
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0]
     ]
   },
   "rule": {
     "answer": "わかった",
     "data": [
-      {"content":"謎","color":"#ffffff"}, {"content":"の","color":"#ffffff"}, {"content":"配","color":"#ffffff"}, {"content":"置","color":"#ffffff"}, {"content":"を","color":"#ffffff"},
-      {"content":"右","color":"#ffffff","fixed":true}, {"content":"の","color":"#ffffff"}, {"content":"よ","color":"#ffffff"}, {"content":"う","color":"#ffffff"}, {"content":"に","color":"#ffffff"},
-      {"content":"バ","color":"#ffffff"}, {"content":"ラ","color":"#ffffff"}, {"content":"バ","color":"#ffffff"}, {"content":"ラ","color":"#ffffff"}, {"content":"に","color":"#ffffff"},
-      {"content":"す","color":"#ffffff"}, {"content":"る","color":"#ffffff"}, {"content":"の","color":"#ffffff"}, {"content":"で","color":"#ffffff"}, {"content":"直","color":"#ffffff"},
-      {"content":"し","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"解","color":"#ffffff"}, {"content":"い","color":"#ffffff"}, {"content":"て","color":"#ffffff"}
+      ["謎", "#ffffff", "", "", 0], ["の", "#ffffff", "", "", 0], ["配", "#ffffff", "", "", 0], ["置", "#ffffff", "", "", 0], ["を", "#ffffff", "", "", 0], 
+      ["右", "#ffffff", "", "", 1], ["の", "#ffffff", "", "", 0], ["よ", "#ffffff", "", "", 0], ["う", "#ffffff", "", "", 0], ["に", "#ffffff", "", "", 0], 
+      ["バ", "#ffffff", "", "", 0], ["ラ", "#ffffff", "", "", 0], ["バ", "#ffffff", "", "", 0], ["ラ", "#ffffff", "", "", 0], ["に", "#ffffff", "", "", 0], 
+      ["す", "#ffffff", "", "", 0], ["る", "#ffffff", "", "", 0], ["の", "#ffffff", "", "", 0], ["で", "#ffffff", "", "", 0], ["直", "#ffffff", "", "", 0], 
+      ["し", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["解", "#ffffff", "", "", 0], ["い", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0]
     ]
   },
   "color1": {
     "answer": "きゅーと",
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff","fixed":true}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"}, {"content":"","color":"#000000"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], [" ↓", "#ffffff", "", "", 1], ["", "#ffffff", "", "", 0], 
+      ["", "#000000", "", "", 0], ["", "#000000", "", "", 0], ["", "#000000", "", "", 0], ["", "#000000", "", "", 0], ["", "#000000", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#0000ff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0]
     ]
   },
   "kuku": {
     "answer": "にし",
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"?","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"<img src=\"pictures/coral.png\" alt=\"coral.png\">","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"<img src=\"pictures/lion.png\" alt=\"lion.png\">","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"PM","color":"#ffffff"}
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["?", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["<img src=\"pictures/coral.png\" alt=\"coral.png\">", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["<img src=\"pictures/lion.png\" alt=\"lion.png\">", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["PM", "#ffffff", "", "", 0]
     ]
   },
   "tetete": {
     "answer": "おうて",
     "data": [
-      {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff","fixed":true}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"て","color":"#ffffff"}
+      ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 1], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0]
     ]
   },
   "onecolon": {
     "answer": "ひまわり",
     "data": [
-      {"content":"3","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"2","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#000000"}, {"content":"4","color":"#ffffff"}, {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"1","color":"#ffffff","fixed":true},
-      {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#000000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
+      ["3", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["2", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#000000", "", "", 0], ["4", "#ffffff", "", "", 0], ["", "#000000", "", "", 0], ["", "#ffffff", "", "", 0], ["1", "#ffffff", "", "", 1], 
+      ["", "#000000", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#000000", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#000000", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0]
     ]
   },
   "ruleq": {
     "answer": "ばにら",
     "data": [
-      {"content":"謎","color":"#ffffff"}, {"content":"の","color":"#ffffff"}, {"content":"配","color":"#ffffff"}, {"content":"置","color":"#ffffff"}, {"content":"を","color":"#ffffff"},
-      {"content":"右","color":"#ffffff"}, {"content":"の","color":"#ffffff"}, {"content":"よ","color":"#ffffff"}, {"content":"う","color":"#ffffff"}, {"content":"3","color":"#ffffff"},
-      {"content":"1","color":"#ffffff"}, {"content":"2","color":"#ffffff"}, {"content":"1","color":"#ffffff"}, {"content":"2","color":"#ffffff"}, {"content":"3","color":"#ffffff"},
-      {"content":"す","color":"#ffffff"}, {"content":"る","color":"#ffffff"}, {"content":"の","color":"#ffffff"}, {"content":"で","color":"#ffffff"}, {"content":"直","color":"#ffffff"},
-      {"content":"し","color":"#ffffff"}, {"content":"て","color":"#ffffff"}, {"content":"解","color":"#ffffff"}, {"content":"い","color":"#ffffff"}, {"content":"て","color":"#ffffff"}
+      ["謎", "#ffffff", "", "", 0], ["の", "#ffffff", "", "", 0], ["配", "#ffffff", "", "", 0], ["置", "#ffffff", "", "", 0], ["を", "#ffffff", "", "", 0], 
+      ["右", "#ffffff", "", "", 0], ["の", "#ffffff", "", "", 0], ["よ", "#ffffff", "", "", 0], ["う", "#ffffff", "", "", 0], ["3", "#ffffff", "", "", 0], 
+      ["1", "#ffffff", "", "", 0], ["2", "#ffffff", "", "", 0], ["1", "#ffffff", "", "", 0], ["2", "#ffffff", "", "", 0], ["3", "#ffffff", "", "", 0], 
+      ["す", "#ffffff", "", "", 0], ["る", "#ffffff", "", "", 0], ["の", "#ffffff", "", "", 0], ["で", "#ffffff", "", "", 0], ["直", "#ffffff", "", "", 0], 
+      ["し", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0], ["解", "#ffffff", "", "", 0], ["い", "#ffffff", "", "", 0], ["て", "#ffffff", "", "", 0]
     ]
   },
   "color2": {
     "answer": "わーるど",
     "data": [
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":" ↓","color":"#ffffff","fixed":true}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#00c000"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#0000ff"}, {"content":"","color":"#ffffff"},
-      {"content":"","color":"#ff0000"}, {"content":"","color":"#ff0000","fixed":true}, {"content":"","color":"#ff0000"}, {"content":"","color":"#ffffff"}, {"content":"","color":"#ffffff"}
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], [" ↓", "#ffffff", "", "", 1], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#00c000", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#0000ff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["", "#ff0000", "", "", 0], ["", "#ff0000", "", "", 1], ["", "#ff0000", "", "", 0], ["", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0]
     ]
   },
   "law": {
     "answer": "いけす",
     "data": [
-      {"content":"国","color":"#ffffff"}, {"content":"道","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"駆","color":"#ffffff"}, {"content":"動","color":"#ffffff"},
-      {"content":"投","color":"#ffffff"}, {"content":"下","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"羽","color":"#ffffff"}, {"content":"化","color":"#ffffff"},
-      {"content":"","color":"#ffffff"}, {"content":"頭","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0000ff"}, {"content":"数","color":"#ffffff"}, {"content":"多","color":"#ffffff"},
-      {"content":"偉","color":"#ffffff"}, {"content":"人","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0500ff"}, {"content":"虹","color":"#ffffff"}, {"content":"","color":"#ffffff"},
-      {"content":"宝","color":"#ffffff"}, {"content":"石","color":"#ffffff"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#ff0000"}, {"content":"<img src=\"pictures/right.png\" alt=\"right.png\">","color":"#0000ff"}, {"content":"?","color":"#ffffff"}
+      ["国", "#ffffff", "", "", 0], ["道", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["駆", "#ffffff", "", "", 0], ["動", "#ffffff", "", "", 0], 
+      ["投", "#ffffff", "", "", 0], ["下", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["羽", "#ffffff", "", "", 0], ["化", "#ffffff", "", "", 0], 
+      ["", "#ffffff", "", "", 0], ["頭", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0000ff", "", "", 0], ["数", "#ffffff", "", "", 0], ["多", "#ffffff", "", "", 0], 
+      ["偉", "#ffffff", "", "", 0], ["人", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0500ff", "", "", 0], ["虹", "#ffffff", "", "", 0], ["", "#ffffff", "", "", 0], 
+      ["宝", "#ffffff", "", "", 0], ["石", "#ffffff", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#ff0000", "", "", 0], ["<img src=\"pictures/right.png\" alt=\"right.png\">", "#0000ff", "", "", 0], ["?", "#ffffff", "", "", 0]
     ]
   }
 }

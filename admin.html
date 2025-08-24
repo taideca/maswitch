@@ -44,8 +44,13 @@
                 <button id="update-image-btn">画像で更新</button>
             </div>
             <div class="control-group">
-                <label for="color-input">マスの色:</label>
-                <input type="color" id="color-input" value="#f0f0f0">
+                <label>色設定:</label>
+                <input type="color" id="main-color-picker" value="#000000">
+                <div id="color-target-selector">
+                    <label><input type="radio" name="colorTarget" value="text" checked> 文字</label>
+                    <label><input type="radio" name="colorTarget" value="background"> 背景</label>
+                    <label><input type="radio" name="colorTarget" value="border"> 枠線</label>
+                </div>
             </div>
             <div class="control-group">
                 <label for="fix-cell-checkbox">
