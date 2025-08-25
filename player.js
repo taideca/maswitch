@@ -247,7 +247,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cells.forEach((cell, index) => {
             const state = {
                 content: cell.innerHTML,
-                color: cell.style.backgroundColor,
+                bgColor: cell.style.backgroundColor,
+                textColor: cell.style.color,
+                borderColor: cell.dataset.borderColor, // datasetから取得
+                boxShadow: cell.style.boxShadow,
                 originalIndex: index // 元の位置を覚えておく
             };
             if (cell.classList.contains('fixed')) {
@@ -268,12 +271,23 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < cells.length; i++) {
             // この位置がもともと固定マスだったかチェック
             const isFixed = fixedCells.some(cell => cell.originalIndex === i);
-            if (!isFixed) {
-                const state = movableCells[movableIndex];
-                cells[i].innerHTML = state.content;
-                cells[i].style.backgroundColor = state.color;
+
+            let stateToApply;
+            if (isFixed) {
+                // 固定マスは元のデータをそのまま適用
+                stateToApply = fixedCells.find(cell => cell.originalIndex === i);
+            } else {
+                // 動かせるマスはシャッフルされたデータを適用
+                stateToApply = movableCells[movableIndex];
                 movableIndex++;
             }
+
+            // 取得したデータでマスの見た目を更新
+            cells[i].innerHTML = stateToApply.content;
+            cells[i].style.backgroundColor = stateToApply.bgColor;
+            cells[i].style.color = stateToApply.textColor;
+            cells[i].dataset.borderColor = stateToApply.borderColor;
+            cells[i].style.boxShadow = stateToApply.boxShadow;
         }
 
         updateCorrectCount();
