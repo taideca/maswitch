@@ -168,14 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
             clickedCell.classList.remove('highlighted');
             highlightedCell = null;
         } else {
-            const tempContent = highlightedCell.innerHTML;
-            const tempColor = highlightedCell.style.backgroundColor;
+            // 全ての関連プロパティを一時変数に保存
+            const temp = {
+                content: highlightedCell.innerHTML,
+                bgColor: highlightedCell.style.backgroundColor,
+                textColor: highlightedCell.style.color,
+                borderColor: highlightedCell.dataset.borderColor,
+                boxShadow: highlightedCell.style.boxShadow
+            };
+            // highlightedCell に clickedCell のプロパティを適用
             highlightedCell.innerHTML = clickedCell.innerHTML;
             highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
-            clickedCell.innerHTML = tempContent;
-            clickedCell.style.backgroundColor = tempColor;
-            adjustFontSize(highlightedCell);
-            adjustFontSize(clickedCell);
+            highlightedCell.style.color = clickedCell.style.color;
+            highlightedCell.dataset.borderColor = clickedCell.dataset.borderColor;
+            highlightedCell.style.boxShadow = clickedCell.style.boxShadow;
+            // clickedCell に temp のプロパティを適用
+            clickedCell.innerHTML = temp.content;
+            clickedCell.style.backgroundColor = temp.bgColor;
+            clickedCell.style.color = temp.textColor;
+            clickedCell.dataset.borderColor = temp.borderColor;
+            clickedCell.style.boxShadow = temp.boxShadow;
+            // adjustFontSize(highlightedCell);
+            // adjustFontSize(clickedCell);
             highlightedCell.classList.remove('highlighted');
             highlightedCell = null;
             updateCorrectCount();
