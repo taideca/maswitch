@@ -98,5 +98,15 @@
       ["な","#ffffff","","",0], ["","#ff0000","","",0], ["ま","#ffffff","","",0], ["","#ff0000","","",0], ["り","#ffffff","","",0],
       ["ろ","#ffffff","","",0], ["","#ff0000","","",0], ["ふ","#ffffff","","",0], ["","#ff0000","","",0], ["ふ","#ffffff","","",0]
     ]
+  },
+  "ame": {
+    "answer": "しれい",
+    "data": [
+      ["<img src=\"pictures/castle.png\" alt=\"castle.png\">","#ffffff","","",0], ["し","#ffffff","","",0], ["","#ffffff","","",0], ["ろ","#ffffff","","",0], ["<img src=\"pictures/paper2.png\" alt=\"paper2.png\">","#ffffff","","",0],
+      ["く","#ffffff","","",0], ["も","#ffffff","","",0], ["あ","#ffffff","","",0], ["め","#ffffff","","",0], ["そ","#ffffff","","",0],
+      ["<img src=\"pictures/spider.png\" alt=\"spider.png\">","#ffffff","","",0], ["れ","#ffffff","","",0], ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",1], ["ぞ","#ffffff","","",0], ["<img src=\"pictures/hair.png\" alt=\"hair.png\">","#ffffff","","",0],
+      ["れ","#ffffff","","",0], ["の","#ffffff","","",0], ["あ","#ffffff","","",0], ["い","#ffffff","","",0], ["だ","#ffffff","","",0],
+      ["<img src=\"pictures/money.png\" alt=\"money.png\">","#ffffff","","",0], ["よ","#ffffff","","",0], ["<img src=\"pictures/bell.png\" alt=\"bell.png\">","#ffffff","","",0], ["め","#ffffff","","",0], ["<img src=\"pictures/candy.png\" alt=\"candy.png\">","#ffffff","","",0]
+    ]
   }
 }
