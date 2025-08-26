@@ -112,11 +112,11 @@
   "balance": {
     "answer": "ばらんす",
     "data": [
-      ["<img src=\"pictures/lion.png\" alt=\"lion.png\">","#ffffff","","0000",0], ["<img src=\"pictures/school.png\" alt=\"school.png\">","#ffffff","","0000",0], ["","#ffffff","","0000",0], ["<img src=\"pictures/skirt.png\" alt=\"skirt.png\">","#ffffff","","0000",0], ["<img src=\"pictures/doll.png\" alt=\"doll.png\">","#ffffff","","0000",0],
-      ["<img src=\"pictures/balloon.png\" alt=\"balloon.png\">","#ffffff","","0000",0], ["","#0000ff","","0000",0], ["","#ffffff","","0000",0], ["<img src=\"pictures/info.png\" alt=\"info.png\">","#ffffff","","0000",0], ["<img src=\"pictures/olive.png\" alt=\"olive.png\">","#ffffff","","0000",0],
-      ["<img src=\"pictures/list_icon.png\" alt=\"list_icon.png\">","#ffffff","","0000",0], ["<img src=\"pictures/card.png\" alt=\"card.png\">","#ffffff","","0000",1], ["","#ffffff","","0000",0], ["？","#ffffff","","0000",1], ["<img src=\"pictures/ink.png\" alt=\"ink.png\">","#ffffff","","0000",0],
+      ["<img src=\"pictures/lion.png\" alt=\"lion.png\">","#ffffff","","",0], ["<img src=\"pictures/school.png\" alt=\"school.png\">","#ffffff","","",0], ["","#ffffff","","",0], ["<img src=\"pictures/skirt.png\" alt=\"skirt.png\">","#ffffff","","",0], ["<img src=\"pictures/doll.png\" alt=\"doll.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/balloon.png\" alt=\"balloon.png\">","#ffffff","","",0], ["","#0000ff","","",0], ["","#ffffff","","",0], ["<img src=\"pictures/info.png\" alt=\"info.png\">","#ffffff","","",0], ["<img src=\"pictures/olive.png\" alt=\"olive.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/list_icon.png\" alt=\"list_icon.png\">","#ffffff","","",0], ["<img src=\"pictures/card.png\" alt=\"card.png\">","#ffffff","","",1], ["","#ffffff","","",0], ["？","#ffffff","","",1], ["<img src=\"pictures/ink.png\" alt=\"ink.png\">","#ffffff","","",0],
       ["","#ffffff","","1100",0], ["","#ffffff","","1010",0], ["","#ffffff","","0010",0], ["","#ffffff","","1010",0], ["","#ffffff","","1001",0],
-      ["","#ffffff","","0000",0], ["","#ffffff","","0000",0], ["<img src=\"pictures/triangle.png\" alt=\"triangle.png\">","#ffffff","","0000",0], ["","#ffffff","","0000",0], ["","#ffffff","","0000",0]
+      ["","#ffffff","","",0], ["","#ffffff","","",0], ["<img src=\"pictures/triangle.png\" alt=\"triangle.png\">","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0]
     ]
   }
 }
