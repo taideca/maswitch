@@ -173,20 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: highlightedCell.innerHTML,
                 bgColor: highlightedCell.style.backgroundColor,
                 textColor: highlightedCell.style.color,
-                borderColor: highlightedCell.dataset.borderColor,
+                borderCode: highlightedCell.dataset.borderCode,
                 boxShadow: highlightedCell.style.boxShadow
             };
             // highlightedCell に clickedCell のプロパティを適用
             highlightedCell.innerHTML = clickedCell.innerHTML;
             highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
             highlightedCell.style.color = clickedCell.style.color;
-            highlightedCell.dataset.borderColor = clickedCell.dataset.borderColor;
+            highlightedCell.dataset.borderCode = clickedCell.dataset.borderCode;
             highlightedCell.style.boxShadow = clickedCell.style.boxShadow;
             // clickedCell に temp のプロパティを適用
             clickedCell.innerHTML = temp.content;
             clickedCell.style.backgroundColor = temp.bgColor;
             clickedCell.style.color = temp.textColor;
-            clickedCell.dataset.borderColor = temp.borderColor;
+            clickedCell.dataset.borderCode = temp.borderCode;
             clickedCell.style.boxShadow = temp.boxShadow;
             // adjustFontSize(highlightedCell);
             // adjustFontSize(clickedCell);
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].style.color = dataArray[2] || '';
                 const borderCode = dataArray[3] || ""; 
                 cells[index].dataset.borderCode = borderCode; // コードをデータとして保存
-                applyShadowFromCode(cells[index], borderCode || "0000"); // 影を適用
+                applyShadowFromCode(cells[index], borderCode); // 影を適用
                 const isFixed = dataArray[4] === 1;
                 cells[index].classList.toggle('fixed', isFixed);
                 // adjustFontSize(cells[index]);
@@ -315,42 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 continue; // 次のループへ
             }
 
-            // --- ▼▼▼ ここからデバッグ用のログ出力 ▼▼▼ ---
-            console.log(`--- マス #${i} のチェック ---`);
-
-            const original = originalGridState[i];
-            const current = cells[i];
-
-            // 比較する値をそれぞれ取得
-            const originalContent = original[0];
-            const currentContent = current.innerHTML;
-            
-            const originalBgColor = original[1] || "";
-            const currentBgColor = rgbToHex(current.style.backgroundColor);
-            
-            const originalTextColor = original[2] || "";
-            const currentTextColor = rgbToHex(current.style.color);
-
-            const originalBorderCode = original[3] || "0000";
-            const currentBorderCode = current.dataset.borderCode || "0000";
-
-            // 各項目が一致しているか判定
-            const contentMatch = currentContent === originalContent;
-            const bgColorMatch = currentBgColor === originalBgColor;
-            const textColorMatch = currentTextColor === originalTextColor;
-            const borderMatch = currentBorderCode === originalBorderCode;
-
-            // 判定結果をコンソールに出力
-            console.log(`内容: ${contentMatch ? '✅' : '❌'} (現在値: '${currentContent}', 正解: '${originalContent}')`);
-            console.log(`背景色: ${bgColorMatch ? '✅' : '❌'} (現在値: '${currentBgColor}', 正解: '${originalBgColor}')`);
-            console.log(`文字色: ${textColorMatch ? '✅' : '❌'} (現在値: '${currentTextColor}', 正解: '${originalTextColor}')`);
-            console.log(`枠線: ${borderMatch ? '✅' : '❌'} (現在値: '${currentBorderCode}', 正解: '${originalBorderCode}')`);
-
             const isMatch = 
                 cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
                 rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
                 rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") && // コンテンツの色の一致
-                (cells[i].dataset.borderCode || "")  === (originalGridState[i][3] || ""); // 枠線の一致
+                cells[i].dataset.borderCode  === (originalGridState[i][3] || ""); // 枠線の一致
 
             if (isMatch) {
                 correctCount++;
