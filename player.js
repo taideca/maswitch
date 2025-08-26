@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].style.backgroundColor = dataArray[1] || '';
                 cells[index].style.color = dataArray[2] || '';
                 const borderCode = dataArray[3] || ""; 
-                cells[index].style.borderCode = borderCode; // コードをデータとして保存
+                cells[index].dataset.borderCode = borderCode; // コードをデータとして保存
                 applyShadowFromCode(cells[index], borderCode); // 影を適用
                 const isFixed = dataArray[4] === 1;
                 cells[index].classList.toggle('fixed', isFixed);
