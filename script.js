@@ -127,9 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
             editingCell.style.color = newColor;
         } else if (selectedTarget === 'background') {
             editingCell.style.backgroundColor = newColor;
-        } else if (selectedTarget === 'border') {
-            editingCell.dataset.borderColor = newColor; // 枠線の色データはdatasetに保存し、見た目は影(boxShadow)にのみ適用
-            editingCell.style.boxShadow = `inset 0 0 0 2px ${newColor}`;
         }
     });
 
@@ -150,7 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const gridData = [];
         cells.forEach(cell => {
-            const borderCode = cell.dataset.borderCode || "0000"; // データ属性からコードを取得
+            const borderCode = (cell.dataset.borderCode === "0000") ? "" : (cell.dataset.borderCode || ""); // データ属性からコードを取得
+            if (borderCode === "0000") {
+                borderCode = ""; // "0000"の場合は空文字に変換して保存
+            }
             const cellData = [
                 cell.innerHTML,
                 cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "",

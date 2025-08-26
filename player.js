@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
                 rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
                 rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") && // コンテンツの色の一致
-                rgbToHex(cells[i].style.borderColor) === (originalGridState[i][3] || ""); // 枠線の色の一致
+                cells[i].style.borderCode === (originalGridState[i][3] || ""); // 枠線の一致
 
             if (isMatch) {
                 correctCount++;
