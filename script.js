@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 枠線コードからbox-shadowを生成
     function applyShadowFromCode(cell, borderCode = "0000") {
         const shadowParts = [];
-        const shadowWidth = '2px';
+        const shadowWidth = '3px';
         const shadowColor = 'black'; // 線の色は黒で統一
 
         if (borderCode[0] === '1') shadowParts.push(`inset 0 ${shadowWidth} 0 0 ${shadowColor}`);  // 上

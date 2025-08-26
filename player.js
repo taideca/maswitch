@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 枠線コードからbox-shadowを生成
     function applyShadowFromCode(cell, borderCode = "0000") {
         const shadowParts = [];
-        const shadowWidth = '2px';
+        const shadowWidth = '3px';
         const shadowColor = 'black';
         if (borderCode[0] === '1') shadowParts.push(`inset 0 ${shadowWidth} 0 0 ${shadowColor}`);
         if (borderCode[1] === '1') shadowParts.push(`inset -${shadowWidth} 0 0 0 ${shadowColor}`);
