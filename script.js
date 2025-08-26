@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateImageBtn = document.getElementById('update-image-btn');
     const mainColorPicker = document.getElementById('main-color-picker');
     const colorTargetRadios = document.querySelectorAll('input[name="colorTarget"]');
+    const borderToggles = document.querySelectorAll('input[name="borderToggle"]');
     const answerKeyInput = document.getElementById('answer-key-input');
     const fixCellCheckbox = document.getElementById('fix-cell-checkbox');
     const generateCodeBtn = document.getElementById('generate-code-btn');
@@ -89,6 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
         editingCell.innerHTML = `<img src="${imagePath}" alt="${filename}.png">`;
     });
 
+    // 枠線選択
+    borderToggles.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            if (!editingCell) return;
+
+            // 4つのチェックボックスの状態から "1010" のようなコードを生成
+            let currentCode = Array.from(borderToggles).map(cb => cb.checked ? '1' : '0').join('');
+            
+            // 生成したコードをデータとしてマスに保存
+            editingCell.dataset.borderCode = currentCode;
+            
+            // 保存したコードを元に影の見た目を更新
+            applyShadowFromCode(editingCell, currentCode);
+        });
+    });
+
     // 固定チェックボックス
     fixCellCheckbox.addEventListener('change', () => {
         if (editingCell) {
@@ -133,11 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const gridData = [];
         cells.forEach(cell => {
+            const borderCode = cell.dataset.borderCode || "0000"; // データ属性からコードを取得
             const cellData = [
                 cell.innerHTML,
                 cell.style.backgroundColor ? rgbToHex(cell.style.backgroundColor) : "",
                 cell.style.color ? rgbToHex(cell.style.color) : "",
-                cell.dataset.borderColor || "", // 枠線色はdatasetから取得
+                borderCode, // 保存したコードを格納
                 cell.classList.contains('fixed') ? 1 : 0 // 固定なら1, そうでなければ0
             ];
             gridData.push(cellData);
@@ -234,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 5個目の要素ごと（行の終わり）に改行とインデントを追加
             if ((i + 1) % 5 === 0) {
-                output += '\n  ';
+                output += '\n    ';
             } else {
                 // 行の途中ならスペースを追加
                 output += ' ';
@@ -268,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: highlightedCell.innerHTML,
                 bgColor: highlightedCell.style.backgroundColor,
                 textColor: highlightedCell.style.color,
-                borderColor: highlightedCell.dataset.borderColor,
+                borderCode: highlightedCell.dataset.borderCode,
                 boxShadow: highlightedCell.style.boxShadow
             };
 
@@ -276,14 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
             highlightedCell.innerHTML = clickedCell.innerHTML;
             highlightedCell.style.backgroundColor = clickedCell.style.backgroundColor;
             highlightedCell.style.color = clickedCell.style.color;
-            highlightedCell.dataset.borderColor = clickedCell.dataset.borderColor;
+            highlightedCell.dataset.borderCode = clickedCell.dataset.borderCode;
             highlightedCell.style.boxShadow = clickedCell.style.boxShadow;
 
             // clickedCell に temp のプロパティを適用
             clickedCell.innerHTML = temp.content;
             clickedCell.style.backgroundColor = temp.bgColor;
             clickedCell.style.color = temp.textColor;
-            clickedCell.dataset.borderColor = temp.borderColor;
+            clickedCell.dataset.borderCode = temp.borderCode;
             clickedCell.style.boxShadow = temp.boxShadow;
 
             // 入れ替え終わったら選択状態をリセット
@@ -310,6 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
             clickedCell.classList.add('editing');
             editingCell = clickedCell;
             updateColorPickerValue();
+            const borderCode = editingCell.dataset.borderCode || "0000";
+            borderToggles.forEach((checkbox, index) => {
+                checkbox.checked = borderCode[index] === '1';
+            });
             fixCellCheckbox.checked = editingCell.classList.contains('fixed');
         } else {
             // 同じマスをクリックした場合は選択解除
@@ -377,15 +399,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.innerHTML = dataArray[0] || '';
                 cell.style.backgroundColor = dataArray[1] || '';
                 cell.style.color = dataArray[2] || '';
-                const borderColor = dataArray[3] || '';
-                cell.dataset.borderColor = borderColor; // データとして保存
-                cell.style.borderColor = ''; // 枠線の色はデフォルトに戻す
-                cell.style.boxShadow = borderColor ? `inset 0 0 0 2px ${borderColor}` : ''; // 影のみ色を適用
+                const borderCode = dataArray[3] || "0000";
+                cell.dataset.borderCode = borderCode; // コードをデータとして保存
+                applyShadowFromCode(cell, borderCode); // 保存したコードを元に影を適用
                 const isFixed = dataArray[4] === 1;
                 cell.classList.toggle('fixed', isFixed);
                 // adjustFontSize(cells[index]);
             }
         });
+    }
+
+    // 枠線コードからbox-shadowを生成
+    function applyShadowFromCode(cell, borderCode = "0000") {
+        const shadowParts = [];
+        const shadowWidth = '2px';
+        const shadowColor = 'black'; // 線の色は黒で統一
+
+        if (borderCode[0] === '1') shadowParts.push(`inset 0 ${shadowWidth} 0 0 ${shadowColor}`);  // 上
+        if (borderCode[1] === '1') shadowParts.push(`inset -${shadowWidth} 0 0 0 ${shadowColor}`); // 右
+        if (borderCode[2] === '1') shadowParts.push(`inset 0 -${shadowWidth} 0 0 ${shadowColor}`); // 下
+        if (borderCode[3] === '1') shadowParts.push(`inset ${shadowWidth} 0 0 0 ${shadowColor}`);  // 左
+
+        cell.style.boxShadow = shadowParts.join(', ');
     }
 
     // 選択状態をすべてリセットする関数

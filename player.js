@@ -219,6 +219,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    // 枠線コードからbox-shadowを生成
+    function applyShadowFromCode(cell, borderCode = "0000") {
+        const shadowParts = [];
+        const shadowWidth = '2px';
+        const shadowColor = 'black';
+        if (borderCode[0] === '1') shadowParts.push(`inset 0 ${shadowWidth} 0 0 ${shadowColor}`);
+        if (borderCode[1] === '1') shadowParts.push(`inset -${shadowWidth} 0 0 0 ${shadowColor}`);
+        if (borderCode[2] === '1') shadowParts.push(`inset 0 -${shadowWidth} 0 0 ${shadowColor}`);
+        if (borderCode[3] === '1') shadowParts.push(`inset ${shadowWidth} 0 0 0 ${shadowColor}`);
+        cell.style.boxShadow = shadowParts.join(', ');
+    }
     
     // 盤面データ適用
     function applyGridData(gridData) {
@@ -227,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].innerHTML = dataArray[0] || '';
                 cells[index].style.backgroundColor = dataArray[1] || '';
                 cells[index].style.color = dataArray[2] || '';
-                const borderColor = dataArray[3] || ''; // 枠線の色を取得
-                cells[index].style.borderColor = borderColor; // 枠線の色を適用
-                cells[index].style.boxShadow = borderColor ? `inset 0 0 0 2px ${borderColor}` : ''; // 内側の影も同じ色で適用
+                const borderCode = dataArray[3] || "0000"; 
+                cells[index].style.borderCode = borderCode; // コードをデータとして保存
+                applyShadowFromCode(cells[index], borderCode); // 影を適用
                 const isFixed = dataArray[4] === 1;
                 cells[index].classList.toggle('fixed', isFixed);
                 // adjustFontSize(cells[index]);
@@ -249,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: cell.innerHTML,
                 bgColor: cell.style.backgroundColor,
                 textColor: cell.style.color,
-                borderColor: cell.dataset.borderColor, // datasetから取得
+                borderCode: cell.dataset.borderCode, // datasetから取得
                 boxShadow: cell.style.boxShadow,
                 originalIndex: index // 元の位置を覚えておく
             };
@@ -286,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cells[i].innerHTML = stateToApply.content;
             cells[i].style.backgroundColor = stateToApply.bgColor;
             cells[i].style.color = stateToApply.textColor;
-            cells[i].dataset.borderColor = stateToApply.borderColor;
+            cells[i].dataset.borderCode = stateToApply.borderCode;
             cells[i].style.boxShadow = stateToApply.boxShadow;
         }
 
