@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[index].innerHTML = dataArray[0] || '';
                 cells[index].style.backgroundColor = dataArray[1] || '';
                 cells[index].style.color = dataArray[2] || '';
-                const borderCode = dataArray[3] || "0000"; 
+                const borderCode = dataArray[3] || ""; 
                 cells[index].style.borderCode = borderCode; // コードをデータとして保存
                 applyShadowFromCode(cells[index], borderCode); // 影を適用
                 const isFixed = dataArray[4] === 1;
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
                 rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
                 rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") ; // コンテンツの色の一致
-                //cells[i].dataset.borderCode === (originalGridState[i][3] || ""); // 枠線の一致
+                cells[i].dataset.borderCode === (originalGridState[i][3] || ""); // 枠線の一致
 
             if (isMatch) {
                 correctCount++;
