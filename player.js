@@ -315,6 +315,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 continue; // 次のループへ
             }
 
+            // --- ▼▼▼ ここからデバッグ用のログ出力 ▼▼▼ ---
+            console.log(`--- マス #${i} のチェック ---`);
+
+            const original = originalGridState[i];
+            const current = cells[i];
+
+            // 比較する値をそれぞれ取得
+            const originalContent = original[0];
+            const currentContent = current.innerHTML;
+            
+            const originalBgColor = original[1] || "";
+            const currentBgColor = rgbToHex(current.style.backgroundColor);
+            
+            const originalTextColor = original[2] || "";
+            const currentTextColor = rgbToHex(current.style.color);
+
+            const originalBorderCode = original[3] || "0000";
+            const currentBorderCode = current.dataset.borderCode || "0000";
+
+            // 各項目が一致しているか判定
+            const contentMatch = currentContent === originalContent;
+            const bgColorMatch = currentBgColor === originalBgColor;
+            const textColorMatch = currentTextColor === originalTextColor;
+            const borderMatch = currentBorderCode === originalBorderCode;
+
+            // 判定結果をコンソールに出力
+            console.log(`内容: ${contentMatch ? '✅' : '❌'} (現在値: '${currentContent}', 正解: '${originalContent}')`);
+            console.log(`背景色: ${bgColorMatch ? '✅' : '❌'} (現在値: '${currentBgColor}', 正解: '${originalBgColor}')`);
+            console.log(`文字色: ${textColorMatch ? '✅' : '❌'} (現在値: '${currentTextColor}', 正解: '${originalTextColor}')`);
+            console.log(`枠線: ${borderMatch ? '✅' : '❌'} (現在値: '${currentBorderCode}', 正解: '${originalBorderCode}')`);
+
             const isMatch = 
                 cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
                 rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
