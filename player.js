@@ -318,8 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isMatch = 
                 cells[i].innerHTML === originalGridState[i][0] && // 内容の一致
                 rgbToHex(cells[i].style.backgroundColor) === (originalGridState[i][1] || "") && // 背景色の一致
-                rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") && // コンテンツの色の一致
-                cells[i].dataset.borderCode === (originalGridState[i][3] || ""); // 枠線の一致
+                rgbToHex(cells[i].style.color) === (originalGridState[i][2] || "") ; // コンテンツの色の一致
+                //cells[i].dataset.borderCode === (originalGridState[i][3] || ""); // 枠線の一致
 
             if (isMatch) {
                 correctCount++;
