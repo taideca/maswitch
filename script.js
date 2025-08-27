@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5x5形式でJSONテキストを整形する関数
     function formatJsonForGrid(puzzleObject) {
-        let output = '{\n  '; // 開始の括弧とインデント
+        let output = `"": {\n  `;
         output += `  "answer": "${puzzleObject.answer}",\n  `;
         output += `  "published": false,\n  `;
         output += '  "data": [\n      '; // data配列の開始
