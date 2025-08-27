@@ -237,8 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5x5形式でJSONテキストを整形する関数
     function formatJsonForGrid(puzzleObject) {
         let output = '{\n  '; // 開始の括弧とインデント
-        output += `  "answer": "${puzzleObject.answer}",\n`;
-        output += '  "data": [\n    '; // data配列の開始
+        output += `  "answer": "${puzzleObject.answer}",\n  `;
+        output += `  "published": false,\n  `;
+        output += '  "data": [\n      '; // data配列の開始
 
         const gridData = puzzleObject.data;
         for (let i = 0; i < gridData.length; i++) {
@@ -252,14 +253,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 5個目の要素ごと（行の終わり）に改行とインデントを追加
             if ((i + 1) % 5 === 0) {
-                output += '\n    ';
+                output += '\n      ';
             } else {
                 // 行の途中ならスペースを追加
                 output += ' ';
             }
         }
         // 最後の余分なインデントを削除し、終了の括弧を追加
-        output = output.trimEnd() + '\n  ]\n}';
+        output = output.trimEnd() + '\n    ]\n  }';
         return output;
     }
     

@@ -117,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function populatePuzzleList() {
         puzzleList.innerHTML = ''; // リストを一旦空にする
         const allPuzzleKeys = Object.keys(allPuzzles); // 問題のIDを取得
-        const excludedIds = ['template', 'rule']; // 除外したいIDのリストを定義
-        const filteredKeys = allPuzzleKeys.filter(key => !excludedIds.includes(key)); // 除外リストに含まれないIDだけを抽出
+        const filteredKeys = allPuzzleKeys.filter(key => allPuzzles[key].published === true); // publishedがtrueのキーだけ抽出
 
         filteredKeys.forEach((key, index) => {
             const listItem = document.createElement('li');
