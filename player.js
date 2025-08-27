@@ -106,20 +106,39 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(puzzles => {
                 allPuzzles = puzzles;
-                populatePuzzleList(); // 問題リストをメニューに生成
-                // ▼▼▼ 初期問題の設定 ▼▼▼
-                loadPuzzleById('color1');
+                const allPuzzleKeys = Object.keys(allPuzzles);
+                const publishedKeys = allPuzzleKeys.filter(key => {
+                    return allPuzzles[key].published === true;
+                });
+                populatePuzzleList(publishedKeys); // 問題リストをメニューに生成
+
+                // --- ここから初期問題の読み込みロジック ---
+                const urlParams = new URLSearchParams(window.location.search);
+                const puzzleIdFromUrl = urlParams.get('id');
+                let initialPuzzleId = '';
+                // 1. URLでIDが指定されていて、それが公開中の問題リストにあれば採用
+                if (puzzleIdFromUrl && publishedKeys.includes(puzzleIdFromUrl)) {
+                    initialPuzzleId = puzzleIdFromUrl;
+                } 
+                // 2. URL指定がない、または無効な場合、最新の問題（リストの最後の問題）をデフォルトにする
+                else if (publishedKeys.length > 0) {
+                    initialPuzzleId = publishedKeys[publishedKeys.length - 1];
+                }
+
+                // 読み込むべきIDがあれば読み込む
+                if (initialPuzzleId) {
+                    loadPuzzleById(initialPuzzleId);
+                } else {
+                    console.error("表示できる公開中の問題がありません。");
+                }        
             })
             .catch(error => console.error('questions.jsonの読み込みに失敗:', error));
     }
     
     // 問題リストをサイドメニューに生成する
-    function populatePuzzleList() {
+    function populatePuzzleList(publishedKeys) {
         puzzleList.innerHTML = ''; // リストを一旦空にする
-        const allPuzzleKeys = Object.keys(allPuzzles); // 問題のIDを取得
-        const filteredKeys = allPuzzleKeys.filter(key => allPuzzles[key].published === true); // publishedがtrueのキーだけ抽出
-
-        filteredKeys.forEach((key, index) => {
+        publishedKeys.forEach((key, index) => {
             const listItem = document.createElement('li');
             const button = document.createElement('button');
             
@@ -131,8 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             button.addEventListener('click', () => {
                 loadPuzzleById(key); // ボタンに対応する問題を読み込む
-                sideMenu.classList.remove('open'); // 問題を選んだらメニューを閉じる
-                menuOverlay.classList.remove('open');
+                closeMenu();
             });
             
             listItem.appendChild(button);
