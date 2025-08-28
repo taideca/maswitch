@@ -376,20 +376,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 一旦フォントサイズをリセットして、デフォルトの大きさに戻す
-        cell.style.fontSize = '';
+        cell.style.fontSize = ''; // スタイルをリセット
 
-        // 内容がマスからはみ出している間、ループで少しずつフォントを小さくする
-        // clientWidth はマスの内側の幅、scrollWidth は内容全体の幅
-        let currentSize = parseInt(window.getComputedStyle(cell).fontSize, 10);
-        while (cell.scrollWidth > cell.clientWidth || cell.scrollHeight > cell.clientHeight) {
-            currentSize--;
-            cell.style.fontSize = `${currentSize}px`;
-
-            // フォントが小さくなりすぎたらループを抜ける
-            if (currentSize <= 8) {
-                break;
+        // 探索するフォントサイズの上限と下限を設定
+        let minSize = 8; // 最小フォントサイズ
+        let maxSize = 100; // 最大フォントサイズ（マスの高さより大きめに設定）
+        let bestSize = minSize; // 最適なサイズを保存する変数
+    
+        // 二分探索で最適なフォントサイズを見つける
+        while (minSize <= maxSize) {
+            let midSize = Math.floor((minSize + maxSize) / 2);
+            cell.style.fontSize = `${midSize}px`;
+    
+            // はみ出しているかチェック
+            if (cell.scrollWidth > cell.clientWidth || cell.scrollHeight > cell.clientHeight) {
+                // はみ出している場合：上限を狭める
+                maxSize = midSize - 1;
+            } else {
+                // 収まっている場合：このサイズを候補として保存し、下限を広げてさらに大きいサイズを探す
+                bestSize = midSize;
+                minSize = midSize + 1;
             }
         }
+    
+        // 見つかった最適なサイズを最終的に適用
+        cell.style.fontSize = `${bestSize}px`;
     }
     
     // 盤面データ適用
@@ -405,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyShadowFromCode(cell, borderCode); // 保存したコードを元に影を適用
                 const isFixed = dataArray[4] === 1;
                 cell.classList.toggle('fixed', isFixed);
-                // adjustFontSize(cells[index]);
+                adjustFontSize(cells[index]);
             }
         });
     }
