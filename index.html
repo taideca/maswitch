@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マスゲーム</title>
+    <title>マスイッチ</title>
     <link rel="shortcut icon" href="pictures/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,14 +19,14 @@
 
     <header class="page-header">
         <div id="menu-toggle-btn" title="リスト"><img src="pictures/list_icon.png"></div>
-        <h1>マスゲーム</h1>
+        <h1>マスイッチ</h1>
         <div id="open-rules-btn" title="ルール"><img src="pictures/info.png"></div>
     </header>
     
     <p>マスをクリックで入れ替えて、謎を解き明かそう！</p>
 
     <div id="status-section">
-        <p>正しい位置にあるパネル: <span id="correct-count">0</span> / 25</p>
+        <p>正しい位置にあるマス: <span id="correct-count">0</span> / 25</p>
     </div>
     
     <div id="grid-container"></div>
@@ -41,7 +41,7 @@
             <button id="close-rules-btn">&times;</button>
             <h2>ルール</h2>
             <ol>
-                <img src="pictures/howtoplay.png" alt="パネル入れ替えの例" style="max-width: 100%; height: auto; margin-top: 10px;">
+                <img src="pictures/howtoplay.png" alt="マス入れ替えの例" style="max-width: 100%; height: auto; margin-top: 10px;">
                 <li>バラバラになったマスを入れ替えて、正しい謎を完成させましょう。</li>
                 <li>マスをクリックするとハイライトされます。</li>
                 <li>続けて別のマスをクリックすると、2つのマスが入れ替えられます。</li>
