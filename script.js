@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // チェック状態に応じて 'fixed' クラスを付け外しする
             editingCell.classList.toggle('fixed', fixCellCheckbox.checked);
             // 見た目をハイライト（後述のCSSで定義）
-            editingCell.style.backgroundColor = fixCellCheckbox.checked ? '#ffffff' : (colorInput.value || '#ffffff');
+            // editingCell.style.backgroundColor = fixCellCheckbox.checked ? '#ffffff' : (colorInput.value || '#ffffff');
         }
     });
 
