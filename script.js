@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editingCell) {
             editingCell.innerHTML = '';
             editingCell.textContent = textInput.value;
-            adjustFontSize(editingCell);
+            // adjustFontSize(editingCell);
         } else {
             alert('編集したいマスを先にクリックしてください！');
         }
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyShadowFromCode(cell, borderCode); // 保存したコードを元に影を適用
                 const isFixed = dataArray[4] === 1;
                 cell.classList.toggle('fixed', isFixed);
-                adjustFontSize(cells[index]);
+                // adjustFontSize(cells[index]);
             }
         });
     }
