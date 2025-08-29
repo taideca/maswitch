@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let output = `"": {\n  `;
         output += `  "answer": "${puzzleObject.answer}",\n  `;
         output += `  "published": false,\n  `;
+        output += `  "difficulty": 1,\n  `;
         output += '  "data": [\n      '; // data配列の開始
 
         const gridData = puzzleObject.data;
