@@ -164,6 +164,17 @@
       ["","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","1111",0], ["","#ffffff","","",0], ["","#ffffff","","",0]
     ]
   },
+  "leaves": {
+    "answer": "はしご",
+    "published": true,
+    "data": [
+      ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
+      ["た","#ffffff","","",0], ["ぶ","#ffffff","","",0], ["ん","#ffffff","","",0], ["何","#ffffff","","",0], ["？","#ffffff","","",0]
+    ]
+  },
   "plus": {
     "answer": "こたえ",
     "published": false,
