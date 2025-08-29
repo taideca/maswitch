@@ -136,7 +136,9 @@ body {
     margin: 0;
 }
 #puzzle-list li button {
-    display: block;
+    display: flex;
+    justify-content: space-between; /* ★両端に寄せる */
+    align-items: center; /* ★上下中央揃え */
     width: 100%;
     padding: 12px;
     margin-bottom: 8px;
@@ -150,6 +152,11 @@ body {
 }
 #puzzle-list li button:hover {
     background-color: #e9ecef;
+}
+/* 難易度（★）のスタイル */
+.difficulty-stars {
+    color: #000000;
+    font-size: 1.1em;
 }
 
 /* ポップアップを開くボタンのスタイル */

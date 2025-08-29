@@ -142,12 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const listItem = document.createElement('li');
             const button = document.createElement('button');
             
-            // "No.001" のようにゼロ埋めして表示
-            button.textContent = `No.${String(index + 1).padStart(3, '0')}`;
+            // 1. 問題番号のテキスト部分を作成
+            const puzzleNumber = document.createElement('span');
+            puzzleNumber.textContent = `No.${String(index + 1).padStart(3, '0')}`;
             
+            // 2. 難易度の★マーク部分を作成
+            const difficultyStars = document.createElement('span');
+            difficultyStars.className = 'difficulty-stars'; // CSSでスタイルを適用するため
+            
+            // "difficulty"キーがあれば、その数だけ★を追加する
+            if (puzzle.difficulty && puzzle.difficulty > 0) {
+                difficultyStars.textContent = '★'.repeat(puzzle.difficulty);
+            }
+
+            // 3. ボタンに問題番号と★を追加
+            button.appendChild(puzzleNumber);
+            button.appendChild(difficultyStars);
+
             // ボタンに、対応する問題のキー(ID)をデータとして埋め込む
             button.dataset.puzzleId = key;
-            
             button.addEventListener('click', () => {
                 loadPuzzleById(key); // ボタンに対応する問題を読み込む
                 closeMenu();
