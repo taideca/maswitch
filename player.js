@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function populatePuzzleList(publishedKeys) {
         puzzleList.innerHTML = ''; // リストを一旦空にする
         publishedKeys.forEach((key, index) => {
+            const puzzle = allPuzzles[key];
             const listItem = document.createElement('li');
             const button = document.createElement('button');
             
