@@ -98,7 +98,7 @@
   "kokuhou": {
     "answer": "いけす",
     "published": true,
-    "difficulty": 3,
+    "difficulty": 4,
     "data": [
       ["国","#ffffff","","",0], ["道","#ffffff","","",0], ["➡","#ffffff","#ff0000","",0], ["駆","#ffffff","","",0], ["動","#ffffff","","",0], 
       ["投","#ffffff","","",0], ["下","#ffffff","","",0], ["➡","#ffffff","#ff0000","",0], ["羽","#ffffff","","",0], ["化","#ffffff","","",0], 
@@ -177,6 +177,18 @@
       ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
       ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0], ["<img src=\"pictures/leaf.png\" alt=\"leaf.png\">","#ffffff","","",0],
       ["た","#ffffff","","",0], ["ぶ","#ffffff","","",0], ["ん","#ffffff","","",0], ["何","#ffffff","","",0], ["？","#ffffff","","",0]
+    ]
+  },
+  "route": {
+    "answer": "かたたたき",
+    "published": true,
+    "difficulty": 5,
+    "data": [
+      ["S","#ffffff","","1000",0], ["か","#ffffff","","1010",0], ["ん","#ffffff","","1010",0], ["じ","#ffffff","","1010",0], ["の","#ffffff","","1100",1],
+      ["ち","#ffffff","","0011",0], ["た","#ffffff","","0010",1], ["が","#ffffff","","0110",0], ["ち","#ffffff","","",0], ["い","#ffffff","","0100",0],
+      ["に","#ffffff","","0001",0], ["た","#ffffff","","0010",0], ["し","#ffffff","","0010",0], ["の","#ffffff","","0100",1], ["う","#ffffff","","1100",0],
+      ["こ","#ffffff","","0011",1], ["た","#ffffff","","",0], ["え","#ffffff","","0100",0], ["し","#ffffff","","0010",0], ["と","#ffffff","","0110",0],
+      ["ち","#ffffff","","0011",0], ["き","#ffffff","","0010",0], ["あ","#ffffff","","0011",1], ["る","#ffffff","","0010",0], ["G","#ffffff","","0010",0]
     ]
   },
   "tenkey": {
