@@ -191,6 +191,18 @@
       ["","#000000","","",0], ["","#ffffff","","",0], ["","#000000","","",0], ["","#ffffff","","",0], ["","#ffffff","","0101",0]
     ]
   },
+  "marumaru": {
+    "answer": "りはん",
+    "published": true,
+    "difficulty": 3,
+    "data": [
+      ["<img src=\"pictures/hair.png\" alt=\"hair.png\">","#ffffff","","",0], ["●","#ffffff","#ffc000","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#0000ff","",0],
+      ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",0], ["●","#ffffff","#0000ff","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#ff0000","",0],
+      ["<img src=\"pictures/rail.png\" alt=\"rail.png\">","#ffffff","","",0], ["●","#ffffff","#0000ff","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
+      ["<img src=\"pictures/nail.png\" alt=\"nail.png\">","#ffffff","","",0], ["●","#ffffff","#ff0000","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
+      ["●","#ffffff","#0000ff","1011",0], ["I","#ffffff","","1010",0], ["●","#ffffff","#ffc000","1010",0], ["●","#ffffff","","1010",0], ["●","#ffffff","#ff0000","1110",0]
+    ]
+  },
   "route": {
     "answer": "かたたたき",
     "published": false,
