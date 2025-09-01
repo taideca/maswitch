@@ -228,14 +228,14 @@
     ]
   },
   "plus": {
-    "answer": "こたえ",
+    "answer": "けっか",
     "published": false,
-    "difficulty": 1,
+    "difficulty": 3,
     "data": [
-      ["","#ffffff","","",0], ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["＝","#ffffff","","",0], ["","#ffffff","","",0],
+      ["","#ffffff","","",0], ["＋","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["＝","#ffffff","","",0], ["","#ffffff","","",0],
       ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
-      ["木","#ffffff","","",0], ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["＝","#ffffff","","",0], ["","#ffffff","","",0],
-      ["‖","#ffffff","","",0], ["","#ffffff","","",0], ["‖","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
+      ["吉","#ffffff","","",0], ["＋","#ffffff","","",0], ["<img src=\"pictures/tree.png\" alt=\"tree.png\">","#ffffff","","",1], ["＝","#ffffff","","",0], ["<img src=\"pictures/ink.png\" alt=\"ink.png\">","#ffffff","","",0],
+      ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
       ["","#ffffff","","1011",0], ["","#ffffff","","1010",0], ["","#ffffff","","1110",0], ["＝","#ffffff","","",0], ["？","#ffffff","","",0]
     ]
   }
