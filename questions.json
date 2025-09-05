@@ -124,11 +124,11 @@
     "published": true,
     "difficulty": 5,
     "data": [
-      ["<img src=\"pictures/sakura.png\" alt=\"sakura.png\">","#ffffff","","",0], ["く","#ffffff","","",0], ["<img src=\"pictures/hair.png\" alt=\"hair.png\">","#ffffff","","",0], ["も","#ffffff","","",0], ["<img src=\"pictures/lottery.png\" alt=\"lottery.png\">","#ffffff","","",0],
+      ["<img src=\"pictures/sakura.png\" alt=\"sakura.png\">","#ffffff","","",0], ["く","#ffffff","","",0], ["<img src=\"pictures/hair.png\" alt=\"hair.png\">","#ffffff","","",1], ["も","#ffffff","","",0], ["<img src=\"pictures/lottery.png\" alt=\"lottery.png\">","#ffffff","","",0],
       ["か","#ffffff","","",0], ["ね","#ffffff","","",0], ["か","#ffffff","","",0], ["み","#ffffff","","",0], ["そ","#ffffff","","",0],
       ["<img src=\"pictures/spider.png\" alt=\"spider.png\">","#ffffff","","",0], ["れ","#ffffff","","",0], ["<img src=\"pictures/bell.png\" alt=\"bell.png\">","#ffffff","","",0], ["ぞ","#ffffff","","",0], ["<img src=\"pictures/money.png\" alt=\"money.png\">","#ffffff","","",0],
       ["れ","#ffffff","","",0], ["の","#ffffff","","",0], ["あ","#ffffff","","",0], ["い","#ffffff","","",0], ["だ","#ffffff","","",0],
-      ["<img src=\"pictures/candy.png\" alt=\"candy.png\">","#ffffff","","",0], ["よ","#ffffff","","",0], ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",0], ["め","#ffffff","","",0], ["<img src=\"pictures/9oclock.png\" alt=\"9oclock.png\">","#ffffff","","",0]
+      ["<img src=\"pictures/candy.png\" alt=\"candy.png\">","#ffffff","","",0], ["よ","#ffffff","","",0], ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",1], ["め","#ffffff","","",0], ["<img src=\"pictures/9oclock.png\" alt=\"9oclock.png\">","#ffffff","","",0]
     ]
   },
   "oneblue": {
@@ -239,7 +239,7 @@
       ["","#ffffff","","1011",0], ["","#ffffff","","1010",0], ["","#ffffff","","1110",0], ["＝","#ffffff","","",0], ["？","#ffffff","","",0]
     ]
   },
-  "newmode": {
+  "colornew": {
     "answer": "ぶるー",
     "published": false,
     "difficulty": 1,
@@ -251,7 +251,7 @@
       ["","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0], ["↖︎","#ffffff","","",0]
     ]
   },
-  "newmode2": {
+  "marumaru2": {
     "answer": "とれいん",
     "published": false,
     "difficulty": 1,
