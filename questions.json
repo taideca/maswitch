@@ -230,9 +230,9 @@
   "plus": {
     "answer": "けっか",
     "published": false,
-    "difficulty": 3,
+    "difficulty": 1,
     "data": [
-      ["","#ffffff","","",0], ["＋","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["＝","#ffffff","","",0], ["","#ffffff","","",0],
+      ["<img src=\"pictures/thread.png\" alt=\"thread.png\">","#ffffff","","",0], ["＋","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["＝","#ffffff","","",0], ["<img src=\"pictures/thread.png\" alt=\"thread.png\">","#ffffff","","",0],
       ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["＋","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
       ["吉","#ffffff","","",0], ["＋","#ffffff","","",0], ["<img src=\"pictures/tree.png\" alt=\"tree.png\">","#ffffff","","",1], ["＝","#ffffff","","",0], ["<img src=\"pictures/kikyo.png\" alt=\"kikyo.png\">","#ffffff","","",0],
       ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
