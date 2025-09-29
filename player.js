@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ゲームモードを取得
+    const gameMode = document.body.dataset.gameMode; // "word" または "select"
+
     const gridContainer = document.getElementById('grid-container');
     const answerInput = document.getElementById('answer-input');
     const submitBtn = document.getElementById('submit-btn');
