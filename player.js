@@ -73,6 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitBtn.addEventListener('click', () => {
+        if (gameMode === 'select') {
+            if (!highlightedCell) {
+                alert('回答するマスを1つ選択してください。');
+                return;
+            }
+            const selectedCellData = [
+                highlightedCell.innerHTML,
+                rgbToHex(highlightedCell.style.backgroundColor) || "",
+                rgbToHex(highlightedCell.style.color) || "",
+                highlightedCell.dataset.borderCode || "",
+                highlightedCell.classList.contains('fixed') ? 1 : 0
+            ];
+            if (JSON.stringify(selectedCellData) === JSON.stringify(correctAnswer)) {
+                alert('正解！おめでとうございます！');
+            } else {
+                alert('不正解です。');
+            }
+            return; // selectモードの処理はここで終了
+        }
+        
         const userAnswer = answerInput.value.trim();
         if (!userAnswer) {
             alert('答えを入力してください。');
@@ -83,6 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userAnswer === 'iamadeveloper') { 
             alert('開発者モードに切り替えます。');
             window.location.href = 'admin.html'; // admin.htmlにページ遷移
+            return;
+        } else if (userAnswer === 'selectmode') {
+            alert('開発者モードに切り替えます。');
+            window.location.href = 'index_select.html'; // admin.htmlにページ遷移
             return;
         }
 
@@ -105,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 最初に一度だけ、questions.jsonを全て読み込む
     function loadAllPuzzles() {
-        fetch('questions.json')
+        const jsonFileName = (gameMode === 'select') ? 'questions_select.json' : 'questions.json';
+        fetch(jsonFileName)
             .then(response => response.json())
             .then(puzzles => {
                 allPuzzles = puzzles;
@@ -135,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error("表示できる公開中の問題がありません。");
                 }        
             })
-            .catch(error => console.error('questions.jsonの読み込みに失敗:', error));
+            .catch(error => console.error(`${jsonFileName}の読み込みに失敗:`, error));
     }
     
     // 問題リストをサイドメニューに生成する
