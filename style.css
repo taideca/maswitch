@@ -434,7 +434,7 @@ hr {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 15px;
-    background-color: #1DA1F2; /* X (Twitter) のブランドカラー */
+    background-color: #000; /* X (Twitter) のブランドカラー */
     color: #fff;
     text-decoration: none;
     border-radius: 20px;
@@ -442,5 +442,5 @@ hr {
     transition: background-color 0.2s;
 }
 .share-button:hover {
-    background-color: #0c85d0;
+    background-color: #333;
 }

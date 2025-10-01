@@ -196,8 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const button = document.createElement('button');
             
             // 1. 問題番号のテキスト部分を作成
-            const puzzleNumber = document.createElement('span');
-            puzzleNumber.textContent = `No.${String(index + 1).padStart(3, '0')}`;
+            const puzzleNumberSpan = document.createElement('span');
+            const puzzleNumber = `No.${String(index + 1).padStart(3, '0')}`;
+            puzzleNumberSpan.textContent = puzzleNumber;
             
             // 2. 難易度の★マーク部分を作成
             const difficultyStars = document.createElement('span');
@@ -209,13 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 3. ボタンに問題番号と★を追加
-            button.appendChild(puzzleNumber);
+            button.appendChild(puzzleNumberSpan);
             button.appendChild(difficultyStars);
 
             // ボタンに、対応する問題のキー(ID)をデータとして埋め込む
             button.dataset.puzzleId = key;
             button.addEventListener('click', () => {
-                loadPuzzleById(key, puzzleNumberStr); // ボタンに対応する問題を読み込む
+                loadPuzzleById(key, puzzleNumber); // ボタンに対応する問題を読み込む
                 closeMenu();
             });
             
@@ -439,15 +440,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCorrectAnswer() {
         const resultHtml = `
             <h2>正解！</h2>
-            <p>問題 <span id="solved-puzzle-number">${currentPuzzleNumber}</span> をクリア！</p>
+            <p><span id="solved-puzzle-number">${currentPuzzleNumber}</span> を解いた！</p>
             <a href="#" id="share-btn" class="share-button" target="_blank" rel="noopener noreferrer">
-                Xでシェアする
+                Xでシェア
             </a>`;
         showPopup(resultHtml);
         
         // シェアボタンのURLをここで設定
         const shareBtn = document.getElementById('share-btn');
-        const text = `#マスイッチ No.${currentPuzzleNumber}に正解した！`;
+        const text = `#マスイッチ ${currentPuzzleNumber}に正解した！`;
         const url = `${window.location.origin}${window.location.pathname}?id=${currentPuzzleId}`;
         shareBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     }
