@@ -238,41 +238,5 @@
       ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["Ⅱ","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0],
       ["","#ffffff","","1011",0], ["","#ffffff","","1010",0], ["","#ffffff","","1110",0], ["＝","#ffffff","","",0], ["？","#ffffff","","",0]
     ]
-  },
-  "colornew": {
-    "answer": "ぶるー",
-    "published": false,
-    "difficulty": 1,
-    "data": [
-      ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0],
-      ["","#7b4d28","","",0], ["","#7b4d28","","",0], ["","#7b4d28","","",0], ["","#7b4d28","","",0], ["","#7b4d28","","",0],
-      ["","#0000ff","","",0], ["","#0000ff","","",0], ["","#0000ff","","",0], ["","#0000ff","","",0], ["","#ffffff","","",0],
-      ["","#00c000","","",0], ["","#00c000","","",0], ["","#00c000","","",0], ["","#00c000","","",0], ["","#00c000","","",0],
-      ["","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0], ["","#ffffff","","",0], ["↖︎","#ffffff","","",0]
-    ]
-  },
-  "marumaru2": {
-    "answer": "とれいん",
-    "published": false,
-    "difficulty": 1,
-    "data": [
-      ["<img src=\"pictures/tail.png\" alt=\"tail.png\">","#ffffff","","",0], ["●","#ffffff","#ffc000","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
-      ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",0], ["●","#ffffff","#0000ff","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#ff0000","",0],
-      ["<img src=\"pictures/rail.png\" alt=\"rail.png\">","#ffffff","","",0], ["●","#ffffff","#0000ff","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
-      ["<img src=\"pictures/nail.png\" alt=\"nail.png\">","#ffffff","","",0], ["●","#ffffff","#ff0000","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
-      ["●","#ffffff","#ffc000","1011",0], ["●","#ffffff","#0000ff","1010",0], ["●","#ffffff","","1010",0], ["I","#ffffff","","1010",0], ["●","#ffffff","#ff0000","1110",0]
-    ]
-  },
-  "amekuji": {
-    "answer": "れいん",
-    "published": false,
-    "difficulty": 5,
-    "data": [
-      ["<img src=\"pictures/lottery.png\" alt=\"lottery.png\">","#ffffff","","",0], ["く","#ffffff","","",0], ["<img src=\"pictures/9oclock.png\" alt=\"9oclock.png\">","#ffffff","","",0], ["も","#ffffff","","",0], ["<img src=\"pictures/bell.png\" alt=\"bell.png\">","#ffffff","","",0],
-      ["あ","#ffffff","","",0], ["め","#ffffff","","",0], ["え","#ffffff","","",0], ["ん","#ffffff","","",0], ["そ","#ffffff","","",0],
-      ["<img src=\"pictures/spider.png\" alt=\"spider.png\">","#ffffff","","",0], ["れ","#ffffff","","",0], ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",0], ["ぞ","#ffffff","","",0], ["<img src=\"pictures/money.png\" alt=\"money.png\">","#ffffff","","",0],
-      ["れ","#ffffff","","",0], ["の","#ffffff","","",0], ["あ","#ffffff","","",0], ["い","#ffffff","","",0], ["だ","#ffffff","","",0],
-      ["<img src=\"pictures/sakura.png\" alt=\"sakura.png\">","#ffffff","","",0], ["よ","#ffffff","","",0], ["<img src=\"pictures/hair.png\" alt=\"hair.png\">","#ffffff","","",0], ["め","#ffffff","","",0], ["<img src=\"pictures/candy.png\" alt=\"candy.png\">","#ffffff","","",0]
-    ]
   }
 }
