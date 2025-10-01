@@ -4,11 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const openRulesBtn = document.getElementById('open-rules-btn');
     const closeRulesBtn = document.getElementById('close-rules-btn');
     const popupOverlay = document.getElementById('popup-overlay');
+    const popupBody = document.getElementById('popup-body');
 
     // --- ポップアップのイベントリスナー ---
     // 「遊び方を見る」ボタンが押されたら、hiddenクラスを外して表示
     openRulesBtn.addEventListener('click', () => {
-        popupOverlay.classList.remove('hidden');
+        const rulesHtml = `
+            <h2>ルール</h2>
+            <ol>
+                <img src="pictures/howtoplay.png" alt="マス入れ替えの例" style="max-width: 100%; height: auto; margin-top: 10px;">
+                <li>バラバラになったマスを入れ替えて、正しい謎を完成させましょう。</li>
+                <li>マスをクリックするとハイライトされます。</li>
+                <li>続けて別のマスをクリックすると、2つのマスが入れ替えられます。</li>
+                <li>赤枠の「固定マス」は動かせず、必ずそのマスに位置します。</li>
+                <li>謎が解けたら、ひらがなで答えを入力して「回答する」ボタンを押してください。</li>
+            </ol>`;
+        showPopup(rulesHtml);
     });
 
     // 「閉じる」ボタンが押されたら、hiddenクラスを付けて非表示
@@ -37,11 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const puzzleList = document.getElementById('puzzle-list');
     
+    // --- 状態を管理する変数 ---
     let cells = [];
     let highlightedCell = null;
     let correctAnswer = '';
     let originalGridState = [];
     let allPuzzles = {};
+
+    let currentPuzzleId = '';
+    let currentPuzzleNumber = '';
 
     // --- 初期化処理 ---
     function initializeGrid() {
@@ -73,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitBtn.addEventListener('click', () => {
+        let isCorrect = false;
+
         if (gameMode === 'select') {
             if (!highlightedCell) {
                 alert('回答するマスを1つ選択してください。');
@@ -86,37 +103,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 highlightedCell.classList.contains('fixed') ? 1 : 0
             ];
             if (JSON.stringify(selectedCellData) === JSON.stringify(correctAnswer)) {
-                alert('正解！おめでとうございます！');
-            } else {
-                alert('不正解です。');
+                isCorrect = true;
             }
-            return; // selectモードの処理はここで終了
-        }
-        
-        const userAnswer = answerInput.value.trim();
-        if (!userAnswer) {
-            alert('答えを入力してください。');
-            return;
+        } else { // gameMode === 'word'
+            const userAnswer = answerInput.value.trim();
+            if (!userAnswer) {
+                alert('答えを入力してください。');
+                return;
+            }
+
+            // ▼▼▼ 合言葉を入力すると開発者ページに移動 ▼▼▼
+            if (userAnswer === 'iamadeveloper') { 
+                alert('開発者モードに切り替えます。');
+                window.location.href = 'admin.html'; // admin.htmlにページ遷移
+                return;
+            } else if (userAnswer === 'selectmode') {
+                alert('選択モードに切り替えます。');
+                window.location.href = 'index_select.html'; // admin.htmlにページ遷移
+                return;
+            }
+
+            // 正誤判定処理
+            if (userAnswer === correctAnswer) {
+                isCorrect = true;
+            }
+            answerInput.value = ''; // 入力欄を空にする
         }
 
-        // ▼▼▼ 合言葉を入力すると開発者ページに移動 ▼▼▼
-        if (userAnswer === 'iamadeveloper') { 
-            alert('開発者モードに切り替えます。');
-            window.location.href = 'admin.html'; // admin.htmlにページ遷移
-            return;
-        } else if (userAnswer === 'selectmode') {
-            alert('選択モードに切り替えます。');
-            window.location.href = 'index_select.html'; // admin.htmlにページ遷移
-            return;
-        }
-
-        // 正誤判定処理
-        if (userAnswer === correctAnswer) {
-            alert('正解！おめでとうございます！');
+        if (isCorrent) {
+            handleCorrectAnswer();
         } else {
             alert('答えが違うようです。');
         }
-        answerInput.value = ''; // 入力欄を空にする
     });
 
     // --- 主要な関数 ---
@@ -125,6 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMenu() {
         sideMenu.classList.remove('open');
         menuOverlay.classList.remove('open');
+    }
+
+    // ポップアップの中身をセットして表示する共通関数
+    function showPopup(contentHtml) {
+        popupBody.innerHTML = contentHtml;
+        popupOverlay.classList.remove('hidden');
     }
 
     // 最初に一度だけ、questions.jsonを全て読み込む
@@ -191,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // ボタンに、対応する問題のキー(ID)をデータとして埋め込む
             button.dataset.puzzleId = key;
             button.addEventListener('click', () => {
-                loadPuzzleById(key); // ボタンに対応する問題を読み込む
+                loadPuzzleById(key, puzzleNumberStr); // ボタンに対応する問題を読み込む
                 closeMenu();
             });
             
@@ -201,9 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // IDを指定してquestions.jsonから問題を読み込む
-    function loadPuzzleById(puzzleId) {
+    function loadPuzzleById(puzzleId, puzzleNumber) {
         const puzzleObject = allPuzzles[puzzleId];
         if (puzzleObject && puzzleObject.data && puzzleObject.answer) {
+            currentPuzzleId = puzzleId;         // 現在の問題IDを保存
+            currentPuzzleNumber = puzzleNumber; // 現在の問題番号を保存
             // originalGridState にも配列形式のまま保存
             originalGridState = JSON.parse(JSON.stringify(puzzleObject.data));
             applyGridData(puzzleObject.data);
@@ -407,6 +433,23 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             return ''; // 変換に失敗した場合は空文字を返す
         }
+    }
+
+    // 正解時にポップアップを表示する処理
+    function handleCorrectAnswer() {
+        const resultHtml = `
+            <h2>正解！</h2>
+            <p>問題 <span id="solved-puzzle-number">${currentPuzzleNumber}</span> をクリア！</p>
+            <a href="#" id="share-btn" class="share-button" target="_blank" rel="noopener noreferrer">
+                Xでシェアする
+            </a>`;
+        showPopup(resultHtml);
+        
+        // シェアボタンのURLをここで設定
+        const shareBtn = document.getElementById('share-btn');
+        const text = `#マスイッチ No.${currentPuzzleNumber}に正解した！`;
+        const url = `${window.location.origin}${window.location.pathname}?id=${currentPuzzleId}`;
+        shareBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     }
 
     // --- 実行開始 ---
