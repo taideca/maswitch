@@ -1,7 +1,7 @@
 {
   "colornew": {
     "answer": ["","#0000ff","","",0],
-    "published": false,
+    "published": true,
     "difficulty": 1,
     "data": [
       ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0], ["","#000000","","",0],
@@ -13,7 +13,7 @@
   },
   "marumaru2": {
     "answer": ["<img src=\"pictures/rail.png\" alt=\"rail.png\">","#ffffff","","",0],
-    "published": false,
+    "published": true,
     "difficulty": 1,
     "data": [
       ["<img src=\"pictures/tail.png\" alt=\"tail.png\">","#ffffff","","",0], ["●","#ffffff","#ffc000","",0], ["●","#ffffff","","",0], ["I","#ffffff","","",0], ["●","#ffffff","#00c000","",0],
@@ -25,7 +25,7 @@
   },
   "amekuji": {
     "answer": ["<img src=\"pictures/rain.png\" alt=\"rain.png\">","#ffffff","","",0],
-    "published": false,
+    "published": true,
     "difficulty": 5,
     "data": [
       ["<img src=\"pictures/lottery.png\" alt=\"lottery.png\">","#ffffff","","",0], ["く","#ffffff","","",0], ["<img src=\"pictures/9oclock.png\" alt=\"9oclock.png\">","#ffffff","","",0], ["も","#ffffff","","",0], ["<img src=\"pictures/bell.png\" alt=\"bell.png\">","#ffffff","","",0],

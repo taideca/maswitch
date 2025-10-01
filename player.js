@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'admin.html'; // admin.htmlにページ遷移
             return;
         } else if (userAnswer === 'selectmode') {
-            alert('開発者モードに切り替えます。');
+            alert('選択モードに切り替えます。');
             window.location.href = 'index_select.html'; // admin.htmlにページ遷移
             return;
         }
