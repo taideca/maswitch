@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             answerInput.value = ''; // 入力欄を空にする
         }
 
-        if (isCorrent) {
+        if (isCorrect) {
             handleCorrectAnswer();
         } else {
             alert('答えが違うようです。');
