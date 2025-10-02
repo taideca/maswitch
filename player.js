@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // シェアボタンのURLをここで設定
         const shareBtn = document.getElementById('share-btn');
-        const text = `#マスイッチ ${currentPuzzleNumber}に正解した！\n\n ▼プレイはこちらから`;
+        const text = `#マスイッチ ${currentPuzzleNumber}に正解した！\n\n▼プレイはこちらから\n`;
         const url = `${window.location.origin}${window.location.pathname}?id=${currentPuzzleId}`;
         shareBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     }
