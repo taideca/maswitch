@@ -197,7 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 1. 問題番号のテキスト部分を作成
             const puzzleNumberSpan = document.createElement('span');
-            const puzzleNumber = `No.${String(index + 1).padStart(3, '0')}`;
+            const puzzleNumber = '';
+            if (gameMode === 'select') {
+                puzzleNumber = `No.S${String(index + 1).padStart(3, '0')}`;
+            } else {
+                puzzleNumber = `No.${String(index + 1).padStart(3, '0')}`;
+            }
             puzzleNumberSpan.textContent = puzzleNumber;
             
             // 2. 難易度の★マーク部分を作成
